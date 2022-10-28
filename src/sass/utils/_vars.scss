@@ -1,0 +1,32 @@
+// Texts
+$text-color-primary: #000000;
+$text-color-secondary: #ff6b08;
+$text-color-light: #545454;
+$text-color-light-modal: #8c8c8c;
+$text-color-lighter: #ffffff;
+$text-color-alert: #ff001b;
+// Backgrounds
+$bg-body: #e5e5e5;
+$bg-footer: #f7f7f7;
+$bg-modal: #ffffff;
+$bg-button: #ff6b01;
+$bg-movie-sliders: $text-color-secondary;
+// Transitions
+$transition-duration: 250ms;
+// Gutters
+$gap: 16px;
+// Sizes
+$padding-section: 60px;
+// Helper classes
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
