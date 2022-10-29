@@ -1,27 +1,26 @@
 import axios from 'axios';
+import { renderPagination } from './pagination';
+
+console.log(renderPagination);
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery');
 
 formRef.addEventListener('submit', event => {
   event.preventDefault();
-  //   console.log(event);
   const { searchQuery } = event.currentTarget;
   const query = searchQuery.value.trim().toLowerCase();
-  //   console.log(query);
   getMoviesList(query);
+  //   renderPagination(5, 20, getMoviesList, query);
 });
 
 async function getMoviesList(query) {
   try {
     const movies = await getMovies(query);
     const { results } = movies;
-    console.log(results);
+    // console.log(results);
     localStorage.setItem('currentPage', JSON.stringify(results));
-    // console.log(results[0].original_title);
-    // console.log(results[0].poster_path);
     const markup = createMarkup(results);
-    // console.log(markup);
     cardsListRef.innerHTML = markup;
   } catch (error) {
     console.log(error);
