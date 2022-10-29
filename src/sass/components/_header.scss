@@ -166,7 +166,7 @@ header {
   width: 280px;
   border-bottom: 1px solid $text-color-lighter;
   margin: 0 auto;
-
+  outline: none;
   background-color: transparent;
   background-image: url('/src/images/search.svg');
   background-size: 12px 12px;
@@ -242,6 +242,7 @@ header {
 
 .library__btns {
   display: flex;
+  // width: 100%;
 }
 
 .library__btn {
