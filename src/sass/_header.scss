@@ -1,40 +1,40 @@
-@mixin mobile {
-  @media screen and (min-width: 320px) {
-    @content;
-  }
-}
+// @mixin mobile {
+//   @media screen and (min-width: 320px) {
+//     @content;
+//   }
+// }
 
-@mixin tablet {
-  @media screen and (min-width: 768px) {
-    @content;
-  }
-}
+// @mixin tablet {
+//   @media screen and (min-width: 768px) {
+//     @content;
+//   }
+// }
 
-@mixin tablet-img {
-  @media screen and (min-width: 321px) {
-    @content;
-  }
-}
+// @mixin tablet-img {
+//   @media screen and (min-width: 321px) {
+//     @content;
+//   }
+// }
 
-@mixin desktop {
-  @media screen and (min-width: 1280px) {
-    @content;
-  }
-}
+// @mixin desktop {
+//   @media screen and (min-width: 1280px) {
+//     @content;
+//   }
+// }
 
-@mixin desktop-img {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
+// @mixin desktop-img {
+//   @media screen and (min-width: 769px) {
+//     @content;
+//   }
+// }
 
-@mixin retina {
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    @content;
-  }
-}
+// @mixin retina {
+//   @media (min-device-pixel-ratio: 2),
+//     (min-resolution: 192dpi),
+//     (min-resolution: 2dppx) {
+//     @content;
+//   }
+// }
 
 ul {
   margin: 0 0;
@@ -53,7 +53,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include tablet {
+  @include mq(tablet) {
     padding-left: 33px;
     padding-right: 33px;
   }
@@ -83,18 +83,18 @@ header {
   //   background-position: right;
   background-size: 100% 100%;
   background-position: cover;
-  @include retina {
+  @include mq(retina) {
     background-image: url(/src/images/header-bg-mob2x.jpg);
   }
-  @include tablet {
+  @include mq(tablet) {
     background-image: url(/src/images/header-bg-tab1x.jpg);
-    @include retina {
+    @include mq(retina) {
       background-image: url(/src/images/header-bg-tab2x.jpg);
     }
   }
-  @include desktop {
+  @include mq(desktop) {
     background-image: url(/src/images/header-bg-desk1x.jpg);
-    @include retina {
+    @include mq(retina) {
       background-image: url(/src/images/header-bg-desk2x.jpg);
     }
   }
@@ -131,7 +131,7 @@ header {
   color: $text-color-lighter;
 
   margin: 0 0;
-  @include tablet {
+  @include mq(tablet) {
     visibility: visible;
     position: static;
   }
@@ -172,7 +172,7 @@ header {
   background-size: 12px 12px;
   background-repeat: no-repeat;
   background-position: 100%;
-  @include tablet {
+  @include mq(tablet) {
     width: 336px;
   }
 }
@@ -203,33 +203,33 @@ header {
   //   background-position: right;
   background-size: 100% 100%;
   background-position: cover;
-  @include retina {
+  @include mq(retina) {
     background-image: linear-gradient(
         rgba(25, 28, 38, 0.5),
         rgba(25, 28, 38, 0.5)
       ),
       url(/src/images/library-bg-mob2x.jpg);
   }
-  @include tablet {
+  @include mq(tablet) {
     background-image: linear-gradient(
         rgba(25, 28, 38, 0.5),
         rgba(25, 28, 38, 0.5)
       ),
       url(/src/images/library-bg-tab1x.jpg);
-    @include retina {
+    @include mq(retina) {
       background-image: linear-gradient(
           rgba(25, 28, 38, 0.5),
           rgba(25, 28, 38, 0.5)
         ),
         url(/src/images/library-bg-tab2x.jpg);
     }
-    @include desktop {
+    @include mq(desktop) {
       background-image: linear-gradient(
           rgba(25, 28, 38, 0.5),
           rgba(25, 28, 38, 0.5)
         ),
         url(/src/images/library-bg-desk1x.jpg);
-      @include retina {
+      @include mq(retina) {
         background-image: linear-gradient(
             rgba(25, 28, 38, 0.5),
             rgba(25, 28, 38, 0.5)
