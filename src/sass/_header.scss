@@ -1,0 +1,280 @@
+@mixin mobile {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet-img {
+  @media screen and (min-width: 321px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin desktop-img {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+ul {
+  margin: 0 0;
+  padding: 0 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include tablet {
+    padding-left: 33px;
+    padding-right: 33px;
+  }
+}
+
+.current::after {
+  position: relative;
+  bottom: -3px;
+  right: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  // border-radius: 2px;
+  background-color: #ff001b;
+  // @media screen and (min-width: 768px) and (max-width: 1199px) {
+  //   bottom: -34px;
+  // }
+}
+
+header {
+  width: 100%;
+  height: 230px;
+  background-color: #191c26;
+  background-image: url(/src/images/header-bg-mob1x.jpg);
+  background-repeat: no-repeat;
+  //   background-position: right;
+  background-size: 100% 100%;
+  background-position: cover;
+  @include retina {
+    background-image: url(/src/images/header-bg-mob2x.jpg);
+  }
+  @include tablet {
+    background-image: url(/src/images/header-bg-tab1x.jpg);
+    @include retina {
+      background-image: url(/src/images/header-bg-tab2x.jpg);
+    }
+    @include desktop {
+      background-image: url(/src/images/header-bg-desk1x.jpg);
+      @include retina {
+        background-image: url(/src/images/header-bg-desk2x.jpg);
+      }
+    }
+  }
+}
+.header__menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo__svg {
+  fill: none;
+}
+
+.header__logo__text {
+  visibility: hidden;
+  position: absolute;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+
+  margin: 0 0;
+  @include tablet {
+    visibility: visible;
+    position: static;
+  }
+}
+
+.header__menu__list {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0 0;
+}
+
+.header__menu__item a {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.header__form__input {
+  display: block;
+  border-width: 0;
+  width: 280px;
+  border-bottom: 1px solid #ffff;
+  margin: 0 auto;
+
+  background-color: transparent;
+  background-image: url('/src/images/search.svg');
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  @include tablet {
+    width: 336px;
+  }
+}
+
+.header__notif {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  // display: flex;
+  color: #ff001b;
+
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.library {
+  width: 100%;
+  height: 230px;
+  background-color: rgb(23, 27, 38);
+  background-image: linear-gradient(
+      rgba(25, 28, 38, 0.5),
+      rgba(25, 28, 38, 0.5)
+    ),
+    url(/src/images/library-bg-mob1x.jpg);
+  background-repeat: no-repeat;
+  //   background-position: right;
+  background-size: 100% 100%;
+  background-position: cover;
+  @include retina {
+    background-image: linear-gradient(
+        rgba(25, 28, 38, 0.5),
+        rgba(25, 28, 38, 0.5)
+      ),
+      url(/src/images/library-bg-mob2x.jpg);
+  }
+  @include tablet {
+    background-image: linear-gradient(
+        rgba(25, 28, 38, 0.5),
+        rgba(25, 28, 38, 0.5)
+      ),
+      url(/src/images/library-bg-tab1x.jpg);
+    @include retina {
+      background-image: linear-gradient(
+          rgba(25, 28, 38, 0.5),
+          rgba(25, 28, 38, 0.5)
+        ),
+        url(/src/images/library-bg-tab2x.jpg);
+    }
+    @include desktop {
+      background-image: linear-gradient(
+          rgba(25, 28, 38, 0.5),
+          rgba(25, 28, 38, 0.5)
+        ),
+        url(/src/images/library-bg-desk1x.jpg);
+      @include retina {
+        background-image: linear-gradient(
+            rgba(25, 28, 38, 0.5),
+            rgba(25, 28, 38, 0.5)
+          ),
+          url(/src/images/library-bg-desk2x.jpg);
+      }
+    }
+  }
+}
+
+.library__btns {
+  display: flex;
+}
+
+.library__btn {
+  width: 152px;
+  height: 44px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  /* or 133% */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.library__btn--active {
+  background-color: #ff6b01;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+
+.library__btns__item + .library__btns__item {
+  margin-left: 32px;
+}
+// .header__form__input::placeholder {
+//   padding-left: 0;
+// }
