@@ -1,20 +1,56 @@
-footer {
-  text-align: center;
-  background-color: $bg-footer;
-  width: 100%;
-  padding: 30px;
-  
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  outline: none;
+  display: inline-block;
+}
 
-  color: $text-color-light;
+.footer {
+  margin-top: -100px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  line-height: 1.19;
+  line-height: 1.14;
+  color: #545454;
+  height: 100px;
+  background: #f7f7f7;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+   @media (min-width: 768px) {
+    height: 80px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
 }
 
-.footer__icon_logo {
-  animation: heartbeat 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
+.svg-heart {
+  width: 14px;
+  height: 14px;
+  fill: #ff6b08;
 }
 
-.footer a {
+br {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.students-modal {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.students-modal:hover {
+  cursor: pointer;
+  color: #ff6b08;
   text-decoration: underline;
-  color: $text-color-light;
 }
+
