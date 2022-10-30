@@ -1,7 +1,4 @@
 import axios from 'axios';
-// import { renderPagination } from './pagination';
-
-// console.log(renderPagination);
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -12,14 +9,12 @@ formRef.addEventListener('submit', event => {
   const { searchQuery } = event.currentTarget;
   const query = searchQuery.value.trim().toLowerCase();
   getMoviesList(query);
-  //   renderPagination(5, 20, getMoviesList, query);
 });
 
 async function getMoviesList(query) {
   try {
     const movies = await getMovies(query);
     const { results } = movies;
-    // console.log(results);
     localStorage.setItem('currentPage', JSON.stringify(results));
     const markup = createMarkup(results);
     cardsListRef.innerHTML = markup;
@@ -36,7 +31,6 @@ async function getMovies(query) {
 }
 
 export function createMarkup(hits) {
-  console.log(hits.length);
   if (hits.length == 0) {
     notifRef.classList.add('header__notif--visible');
     const timerId = setTimeout(() => {
@@ -45,11 +39,6 @@ export function createMarkup(hits) {
   }
   return hits
     .map(element => {
-      //   console.log(element.original_title);
-      //   console.log(element.poster_path);
-      //   console.log(element.release_date.slice(0, 4));
-      //   console.log(element.vote_average);
-      //   console.log(element.genre_ids);
       let genres = '';
       element.genre_ids.forEach(element => {
         genres += `${element} `;
@@ -59,29 +48,34 @@ export function createMarkup(hits) {
       if (element.poster_path !== null) {
         image = `http://image.tmdb.org/t/p/w780${element.poster_path}`;
       }
-      return `<li class="film-gallery__item card">
-  <a href="http://" class="link">
-    <img
-      class="film-gallery__img"
-      src="${image}"
-      alt="фото фільма"
-    />
-    <div class="film">
-      <h2 class="film__title">${element.original_title}</h2>
-    </div>
-    <div class="film__wrapper">
-      <p class="film__genre film__wrapper-reset">Drama, Action</p>
-      <p class="film__line film__wrapper-reset">|</p>
-      <p class="film__relise film__wrapper-reset">${element.release_date.slice(
+
+      const elementId = element.id;
+      return `<li class="film-gallery__item card js-film" data-id=${elementId}>
+        <a href="http://" class="link js-film" data-id=${elementId}>
+          <img
+            class="film-gallery__img js-film"
+            data-id=${elementId}
+            src="${image}"
+            alt="фото фільма"
+          />
+          <div class="film js-film" data-id=${elementId}>
+            <h2 class="film__title js-film" data-id=${elementId}>${
+        element.original_title
+      }</h2>
+          </div>
+          <div class="film__wrapper js-film" data-id=${elementId}>
+            <p class="film__genre film__wrapper-reset js-film" data-id=${elementId}>Drama, Action</p>
+            <p class="film__line film__wrapper-reset js-film" data-id=${elementId}>|</p>
+            <p class="film__relise film__wrapper-reset js-film" data-id=${elementId}>${element.release_date.slice(
         0,
         4
       )}</p>
-      <p class="film__rating visually-hidden film__wrapper-reset">${
+            <p class="film__rating visually-hidden film__wrapper-reset js-film" data-id=${elementId}>${
         element.vote_average
       }</p>
-    </div>
-  </a>
-</li>`;
+          </div>
+        </a>
+      </li>`;
     })
     .join('');
 }
