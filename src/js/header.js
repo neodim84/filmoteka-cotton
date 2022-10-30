@@ -46,12 +46,17 @@ export function createMarkup(hits) {
       element.genre_ids.forEach(element => {
         genres += `${element} `;
       });
-      console.log(genres);
+
+      console.log(element.poster_path);
+      let image = 'https://picsum.photos/200';
+      if (element.poster_path !== null) {
+        image = `http://image.tmdb.org/t/p/w780${element.poster_path}`;
+      }
       return `<li class="film-gallery__item card">
   <a href="http://" class="link">
     <img
       class="film-gallery__img"
-      src="http://image.tmdb.org/t/p/w780${element.poster_path}"
+      src="${image}"
       alt="фото фільма"
     />
     <div class="film">
