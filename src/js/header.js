@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
+const notifRef = document.querySelector('.header__notif');
 
 formRef.addEventListener('submit', event => {
   event.preventDefault();
@@ -35,6 +36,13 @@ async function getMovies(query) {
 }
 
 export function createMarkup(hits) {
+  console.log(hits.length);
+  if (hits.length == 0) {
+    notifRef.classList.add('header__notif--visible');
+    const timerId = setTimeout(() => {
+      notifRef.classList.remove('header__notif--visible');
+    }, 3000);
+  }
   return hits
     .map(element => {
       //   console.log(element.original_title);
@@ -46,12 +54,16 @@ export function createMarkup(hits) {
       element.genre_ids.forEach(element => {
         genres += `${element} `;
       });
-      console.log(genres);
+
+      let image = 'https://picsum.photos/200';
+      if (element.poster_path !== null) {
+        image = `http://image.tmdb.org/t/p/w780${element.poster_path}`;
+      }
       return `<li class="film-gallery__item card">
   <a href="http://" class="link">
     <img
       class="film-gallery__img"
-      src="http://image.tmdb.org/t/p/w780${element.poster_path}"
+      src="${image}"
       alt="фото фільма"
     />
     <div class="film">

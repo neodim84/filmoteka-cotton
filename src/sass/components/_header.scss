@@ -178,6 +178,7 @@ header {
 }
 
 .header__notif {
+  display: none;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -188,6 +189,10 @@ header {
 
   margin-top: 15px;
   margin-bottom: 0;
+}
+
+.header__notif--visible {
+  display: block;
 }
 
 .library {
