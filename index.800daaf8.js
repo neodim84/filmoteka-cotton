@@ -1,0 +1,2 @@
+document.querySelector(".js-card");const e=document.getElementById("#pagination"),r=document.querySelector(".arrow-left"),t=document.querySelector(".arrow-right");let a,d=1;function o(e){1===d?r.classList.add("disabled-arrow"):r.classList.remove("disabled-arrow"),d===e?t.classList.add("disabled-arrow"):t.classList.remove("disabled-arrow")}e.addEventListener("click",(function(e){if("BUTTON"!=e.target.tagName)return;o(a)}));
+//# sourceMappingURL=index.800daaf8.js.map
