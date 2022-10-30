@@ -47,25 +47,29 @@ export function createMarkup(hits) {
         genres += `${element} `;
       });
       console.log(genres);
-      return `
-  <li class="film-gallery__item list">
-      <a href="http://">
-        <img
-          src="http://image.tmdb.org/t/p/w780${element.poster_path}"
-          alt="фото фільма"
-          width="394"
-          height="634"
-        />
-      </a>
-      <div class="film">
-        <h2>${element.original_title}</h2>
-      </div>
-      <div class="film__wrapper">
-        <p class="film__genre">Drama, Action</p>
-        <p class="film__line">|</p>
-        <p class="film__relise">${element.release_date.slice(0, 4)}</p>
-        <p class="film__rating is-hidden">${element.vote_average}</p>
-      </div>`;
+      return `<li class="film-gallery__item card">
+  <a href="http://" class="link">
+    <img
+      class="film-gallery__img"
+      src="http://image.tmdb.org/t/p/w780${element.poster_path}"
+      alt="фото фільма"
+    />
+    <div class="film">
+      <h2 class="film__title">${element.original_title}</h2>
+    </div>
+    <div class="film__wrapper">
+      <p class="film__genre film__wrapper-reset">Drama, Action</p>
+      <p class="film__line film__wrapper-reset">|</p>
+      <p class="film__relise film__wrapper-reset">${element.release_date.slice(
+        0,
+        4
+      )}</p>
+      <p class="film__rating visually-hidden film__wrapper-reset">${
+        element.vote_average
+      }</p>
+    </div>
+  </a>
+</li>`;
     })
     .join('');
 }
