@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { renderPagination } from './pagination';
+// import { renderPagination } from './pagination';
 
-console.log(renderPagination);
+// console.log(renderPagination);
 
 const formRef = document.querySelector('.header__form');
-const cardsListRef = document.querySelector('.film-gallery');
+const cardsListRef = document.querySelector('.film-gallery__list');
 
 formRef.addEventListener('submit', event => {
   event.preventDefault();
