@@ -106,7 +106,6 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
 
       button.classList.add('active');
       setupPagination(listItems, paginationElement, rows);
-      hideExtremeButtons(totalPages);
     });
 
     return button;
@@ -122,7 +121,6 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
     }
 
     disableArrowBtn(totalPages);
-    hideExtremeButtons(totalPages);
   }
 
   // функция для отслеживания кликов по стрелке вправо
@@ -134,14 +132,12 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
       callback(listElement, currentPage, searchQuery);
     }
     disableArrowBtn(totalPages);
-    hideExtremeButtons(totalPages);
   }
 
   setupPagination(listItems, paginationElement, rows);
   arrowLeft.onclick = onArrowLeftClick;
   arrowRight.onclick = onArrowRightClick;
 
-  hideExtremeButtons(totalPages);
   disableArrowBtn(totalPages);
 }
 
