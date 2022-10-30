@@ -28,9 +28,12 @@
         width: 280px;
     }
 
-    padding-inline-start: 0;
+    @include mq(tablet-only) {
+        width: 336px;
+    }
 
     @include mq(desktop) {
+        width: 395px;
         margin-right: 15px;
         margin-bottom: 32px;
 
@@ -66,17 +69,20 @@
 }
 
 .film {
-    display: inline-block;
+    
     @include mq(mobile-only) {
         margin-top: 10px;
+        word-break: break-word;
     }
 
     @include mq(tablet-only) {
         margin-top: 8px;
+        word-break: break-word;
     }
 
     @include mq(desktop) {
         margin-top: 12px;
+        word-break: break-word;
     }
 }
 
