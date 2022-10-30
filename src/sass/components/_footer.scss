@@ -1,0 +1,18 @@
+.footer {
+  grid-area: footer;
+  background-color: $bg-footer;
+  width: 100%;
+}
+
+.footer__section {
+    font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #545454;
+}
