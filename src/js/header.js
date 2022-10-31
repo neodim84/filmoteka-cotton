@@ -1,45 +1,92 @@
 import axios from 'axios';
+import Pagination from 'tui-pagination';
 import genres from '../json/genres.json';
 import { genreTitle } from './genresSelect';
+import { container, instance } from './pagination';
+// console.log(container);
+// console.log(instance);
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
 const notifRef = document.querySelector('.header__notif');
+// const options = {
+//   totalItems: 20000,
+//   itemsPerPage: 20,
+//   visiblePages: 10,
+//   page: 1,
+//   centerAlign: true,
+//   firstItemClassName: 'tui-first-child',
+//   lastItemClassName: 'tui-last-child',
+//   template: {
+//     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+//     currentPage:
+//       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+//     moveButton:
+//       '<a href="#" class="tui-page-btn tui-{{type}}">' +
+//       '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//       '</a>',
+//     disabledMoveButton:
+//       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+//       '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//       '</span>',
+//     moreButton:
+//       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+//       '<span class="tui-ico-ellip">...</span>' +
+//       '</a>',
+//   },
+// };
+let query = '';
+let page = 1;
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 formRef.addEventListener('submit', event => {
   event.preventDefault();
   const { searchQuery } = event.currentTarget;
-  const query = searchQuery.value.trim().toLowerCase();
+  query = searchQuery.value.trim().toLowerCase();
   getMoviesList(query);
 });
+container.addEventListener('click', handleTui);
+
+function handleTui() {
+  page = instance.getCurrentPage();
+  // console.log(instance.getCurrentPage());
+  getMoviesList(query);
+}
 
 async function getMoviesList(query) {
   try {
-    const movies = await getMovies(query);
+    const movies = await getMoviesAPI(query, page);
+    instance.setTotalItems(movies.total_results);
     const { results } = movies;
     localStorage.setItem('currentPage', JSON.stringify(results));
+    notification(results.length);
     const markup = createMarkup(results);
     cardsListRef.innerHTML = markup;
+    console.log(instance);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function getMovies(query) {
+async function getMoviesAPI(query, page) {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=e1d2d59faab8416a91a95646b10aa32e&language=en-US&page=1&include_adult=false&query=${query}`
+    `/search/movie?api_key=e1d2d59faab8416a91a95646b10aa32e&language=en-US&page=1&include_adult=false&query=${query}&page=${page}`
   );
+  console.log(data);
   return data;
 }
 
-export function createMarkup(hits) {
-  if (hits.length == 0) {
+function notification(length) {
+  if (length == 0) {
     notifRef.classList.add('header__notif--visible');
     const timerId = setTimeout(() => {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
   }
+}
 
+export function createMarkup(hits) {
+  // notification(hits.length);
   return hits
     .map(element => {
       const genreId = element.genre_ids;
