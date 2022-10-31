@@ -47,14 +47,21 @@ export function createMarkupModal({
   overview,
   title,
 }) {
-  const imgUrl = `http://image.tmdb.org/t/p/w780/${poster_path}`;
-  const genre = genres.map(item => item.name).join(', ');
+  let imgUrl = 'https://picsum.photos/200/300';
+  if (poster_path !== null) {
+    imgUrl = `http://image.tmdb.org/t/p/w780/${poster_path}`;
+  }
+  let genre = genres.map(item => item.name).join(', ');
+  if (genres.length === 0) {
+    genre = 'Unknown';
+  }
+  if (overview === '') {
+    overview = 'Description coming soon...';
+  }
   return `
-          <ul class="modal__list list">
-          <li class="modal__list__item">
+          <div class="modal__poster__holder">
             <img class="modal__poster" src=${imgUrl} alt="" width="240" />
-          </li>
-          <li class="modal__list__item">
+          </div>
             <div class="modal__info">
               <h2 class="modal__title">${title}</h2>
               <table class="modal__table">
@@ -79,9 +86,7 @@ export function createMarkupModal({
               </table>
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
-              <button type="submit" class="modal__btn--watched modal__btn">Add to watched</button>
-              <button type="submit" class="modal__btn--queue modal__btn">Add to queue</button>
-            </div>
-          </li>
-        </ul>`;
+              <div class="modal__holder__btn"><button type="submit" class="modal__btn--watched modal__btn">add to Watched</button>
+              <button type="submit" class="modal__btn--queue modal__btn">Add to queue</button></div>
+              </div>`;
 }
