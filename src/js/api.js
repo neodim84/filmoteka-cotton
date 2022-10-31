@@ -13,6 +13,13 @@ export const getMovie = async page => {
   return data;
 };
 
+export async function getMovieById(movieId) {
+  const { data } = await axios.get(
+    `/movie/${movieId}?api_key=${API_KEY}&${language}`
+  );
+  return data;
+}
+
 const api_movie =
   'https://api.themoviedb.org/3/trending/movie/day?api_key=e1d2d59faab8416a91a95646b10aa32e';
 
