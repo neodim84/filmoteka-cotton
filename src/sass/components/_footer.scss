@@ -17,15 +17,15 @@ li {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.14;
-  color: #545454;
+  color: $text-color-light;
   height: 100px;
-  background: #f7f7f7;
+  background: $bg-footer;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
 
-   @media (min-width: 768px) {
+   @include mq (tablet) {
     height: 80px;
     font-size: 16px;
     line-height: 1.18;
@@ -35,11 +35,11 @@ li {
 .svg-heart {
   width: 14px;
   height: 14px;
-  fill: #ff6b08;
+  fill: $text-color-secondary;
 }
 
 br {
-  @media (min-width: 768px) {
+  @include mq (tablet) {
     display: none;
   }
 }
@@ -50,7 +50,7 @@ br {
 
 .students-modal:hover {
   cursor: pointer;
-  color: #ff6b08;
+  color: $text-color-secondary;
   text-decoration: underline;
 }
 
