@@ -26,16 +26,15 @@ export const markupGallery = async results => {
                   0,
                   4
                 )}</p>
+                  <p class="film__rating visually-hidden film__wrapper-reset">
+                    ${item.vote_average}
+                  </p>
               </div>
             </a>
           </li>`
     )
     .join('');
 };
-
-//   <p class="film__rating visually-hidden film__wrapper-reset">
-//     ${item.vote_average}
-//   </p>;
 
 // ===============================================
 
