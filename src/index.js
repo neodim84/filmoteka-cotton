@@ -5,3 +5,4 @@
 
 import './js/pagination';
 // import spinnerStart from './js/spinner';
+// import gallery from '/js/gallery';

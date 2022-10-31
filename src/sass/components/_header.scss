@@ -1,40 +1,40 @@
-@mixin mobile {
-  @media screen and (min-width: 320px) {
-    @content;
-  }
-}
+// @mixin mobile {
+//   @media screen and (min-width: 320px) {
+//     @content;
+//   }
+// }
 
-@mixin tablet {
-  @media screen and (min-width: 768px) {
-    @content;
-  }
-}
+// @mixin tablet {
+//   @media screen and (min-width: 768px) {
+//     @content;
+//   }
+// }
 
-@mixin tablet-img {
-  @media screen and (min-width: 321px) {
-    @content;
-  }
-}
+// @mixin tablet-img {
+//   @media screen and (min-width: 321px) {
+//     @content;
+//   }
+// }
 
-@mixin desktop {
-  @media screen and (min-width: 1280px) {
-    @content;
-  }
-}
+// @mixin desktop {
+//   @media screen and (min-width: 1280px) {
+//     @content;
+//   }
+// }
 
-@mixin desktop-img {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
+// @mixin desktop-img {
+//   @media screen and (min-width: 769px) {
+//     @content;
+//   }
+// }
 
-@mixin retina {
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    @content;
-  }
-}
+// @mixin retina {
+//   @media (min-device-pixel-ratio: 2),
+//     (min-resolution: 192dpi),
+//     (min-resolution: 2dppx) {
+//     @content;
+//   }
+// }
 
 ul {
   margin: 0 0;
@@ -53,7 +53,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include tablet {
+  @include mq(tablet) {
     padding-left: 33px;
     padding-right: 33px;
   }
@@ -68,7 +68,7 @@ a {
   width: 100%;
   height: 3px;
   // border-radius: 2px;
-  background-color: #ff001b;
+  background-color: $text-color-alert;
   // @media screen and (min-width: 768px) and (max-width: 1199px) {
   //   bottom: -34px;
   // }
@@ -77,25 +77,25 @@ a {
 header {
   width: 100%;
   height: 230px;
-  background-color: #191c26;
+  background-color: $text-color-primary;
   background-image: url(/src/images/header-bg-mob1x.jpg);
   background-repeat: no-repeat;
   //   background-position: right;
   background-size: 100% 100%;
   background-position: cover;
-  @include retina {
+  @include mq(retina) {
     background-image: url(/src/images/header-bg-mob2x.jpg);
   }
-  @include tablet {
+  @include mq(tablet) {
     background-image: url(/src/images/header-bg-tab1x.jpg);
-    @include retina {
+    @include mq(retina) {
       background-image: url(/src/images/header-bg-tab2x.jpg);
     }
-    @include desktop {
-      background-image: url(/src/images/header-bg-desk1x.jpg);
-      @include retina {
-        background-image: url(/src/images/header-bg-desk2x.jpg);
-      }
+  }
+  @include mq(desktop) {
+    background-image: url(/src/images/header-bg-desk1x.jpg);
+    @include mq(retina) {
+      background-image: url(/src/images/header-bg-desk2x.jpg);
     }
   }
 }
@@ -128,10 +128,10 @@ header {
   align-items: center;
   text-align: center;
 
-  color: #ffffff;
+  color: $text-color-lighter;
 
   margin: 0 0;
-  @include tablet {
+  @include mq(tablet) {
     visibility: visible;
     position: static;
   }
@@ -150,44 +150,49 @@ header {
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  /* identical to box height */
 
   display: flex;
   align-items: center;
   text-align: center;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: $text-color-lighter;
 }
 
 .header__form__input {
+  color: $text-color-lighter;
   display: block;
   border-width: 0;
   width: 280px;
-  border-bottom: 1px solid #ffff;
+  border-bottom: 1px solid $text-color-lighter;
   margin: 0 auto;
-
+  outline: none;
   background-color: transparent;
   background-image: url('/src/images/search.svg');
   background-size: 12px 12px;
   background-repeat: no-repeat;
   background-position: 100%;
-  @include tablet {
+  @include mq(tablet) {
     width: 336px;
   }
 }
 
 .header__notif {
+  display: none;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   // display: flex;
-  color: #ff001b;
+  color: $text-color-alert;
 
   margin-top: 15px;
   margin-bottom: 0;
+}
+
+.header__notif--visible {
+  display: block;
 }
 
 .library {
@@ -203,33 +208,33 @@ header {
   //   background-position: right;
   background-size: 100% 100%;
   background-position: cover;
-  @include retina {
+  @include mq(retina) {
     background-image: linear-gradient(
         rgba(25, 28, 38, 0.5),
         rgba(25, 28, 38, 0.5)
       ),
       url(/src/images/library-bg-mob2x.jpg);
   }
-  @include tablet {
+  @include mq(tablet) {
     background-image: linear-gradient(
         rgba(25, 28, 38, 0.5),
         rgba(25, 28, 38, 0.5)
       ),
       url(/src/images/library-bg-tab1x.jpg);
-    @include retina {
+    @include mq(retina) {
       background-image: linear-gradient(
           rgba(25, 28, 38, 0.5),
           rgba(25, 28, 38, 0.5)
         ),
         url(/src/images/library-bg-tab2x.jpg);
     }
-    @include desktop {
+    @include mq(desktop) {
       background-image: linear-gradient(
           rgba(25, 28, 38, 0.5),
           rgba(25, 28, 38, 0.5)
         ),
         url(/src/images/library-bg-desk1x.jpg);
-      @include retina {
+      @include mq(retina) {
         background-image: linear-gradient(
             rgba(25, 28, 38, 0.5),
             rgba(25, 28, 38, 0.5)
@@ -242,6 +247,7 @@ header {
 
 .library__btns {
   display: flex;
+  // width: 100%;
 }
 
 .library__btn {
@@ -256,7 +262,6 @@ header {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  /* or 133% */
 
   display: flex;
   align-items: center;
@@ -264,11 +269,11 @@ header {
   text-align: center;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: $text-color-lighter;
 }
 
 .library__btn--active {
-  background-color: #ff6b01;
+  background-color: $bg-button;
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
 
