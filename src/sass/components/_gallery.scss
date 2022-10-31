@@ -84,8 +84,9 @@
 }
 
 .film__wrapper {
-  display: flex;
-  gap: 5px;
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
 }
 
 .film__title {
@@ -102,7 +103,7 @@
   }
 }
 
-.film__wrapper-reset {
+.film__wrapper-reset { 
   display: inline-block;
   @include font(500, 12px, 1.33, null);
   color: $text-color-secondary;
@@ -124,4 +125,23 @@
     transform: scale(1.05);
     box-shadow: 4px 3px 12px -1px rgba(255, 107, 8, 0.5);
   }
+}
+
+.film__rating{
+    display: flex;
+    justify-content: center;
+
+    width: 36px;
+    height: 16px;   
+    border-radius: 5px;
+
+    @include font(500, 12px, 1.17, null);
+    background-color: $text-color-secondary;
+    color: $text-color-lighter;
+
+    @include mq(desktop) {
+        width: 40px;
+        height: 20px;
+        align-items: center;
+    }
 }
