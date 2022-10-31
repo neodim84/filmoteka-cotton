@@ -1,4 +1,6 @@
 import axios from 'axios';
+import genres from '../json/genres.json';
+import { genreTitle } from './genresSelect';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -37,14 +39,13 @@ export function createMarkup(hits) {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
   }
+
   return hits
     .map(element => {
-      let genres = '';
-      element.genre_ids.forEach(element => {
-        genres += `${element} `;
-      });
-
+      const genreId = element.genre_ids;
+      const genresText = genreTitle(genreId, genres);
       let image = 'https://picsum.photos/200';
+
       if (element.poster_path !== null) {
         image = `http://image.tmdb.org/t/p/w780${element.poster_path}`;
       }
@@ -64,7 +65,7 @@ export function createMarkup(hits) {
       }</h2>
           </div>
           <div class="film__wrapper js-film" data-id=${elementId}>
-            <p class="film__genre film__wrapper-reset js-film" data-id=${elementId}>Drama, Action</p>
+            <p class="film__genre film__wrapper-reset js-film" data-id=${elementId}>${genresText}</p>
             <p class="film__line film__wrapper-reset js-film" data-id=${elementId}>|</p>
             <p class="film__relise film__wrapper-reset js-film" data-id=${elementId}>${element.release_date.slice(
         0,
