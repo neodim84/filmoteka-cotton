@@ -1,6 +1,7 @@
 import * as API from './api';
 import * as genres from './genres';
 import { genreTitle } from './genresSelect';
+import { instance, container } from './pagination';
 
 const refs = {
   trend: document.querySelector('.film-gallery__list'),
@@ -33,9 +34,10 @@ async function getTrending() {
                   genres
                 )}</p>
                 <p class="film__line film__wrapper-reset">|</p>
-                <p class="film__relise film__wrapper-reset">${
-                      item.release_date.slice(0, 4)
-                }</p>
+                <p class="film__relise film__wrapper-reset">${item.release_date.slice(
+                  0,
+                  4
+                )}</p>
                 <p class="film__rating visually-hidden film__wrapper-reset">${
                   item.vote_average
                 }</p>
@@ -51,3 +53,9 @@ async function getTrending() {
 }
 
 getTrending();
+
+container.addEventListener('click', handleTui);
+
+function handleTui() {
+  getTrending(instance.getCurrentPage());
+}
