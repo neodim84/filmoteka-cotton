@@ -3,6 +3,9 @@
 // import axios from 'axios';
 // import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
-import './js/pagination';
 // import spinnerStart from './js/spinner';
-// import gallery from '/js/gallery';
+import './js/header';
+import './js/gallery';
+import './js/genresSelect';
+import './js/pagination';
+import './js/footer';
