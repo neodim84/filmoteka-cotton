@@ -65,7 +65,9 @@ export function createMarkupModal({
                 </tr>
                 <tr>
                   <td>Popularity</td>
-                  <td class="modal__table--popularity">${popularity}</td>
+                  <td class="modal__table--popularity">${popularity.toFixed(
+                    1
+                  )}</td>
                 </tr>
                 <tr>
                   <td>Original Title</td>
