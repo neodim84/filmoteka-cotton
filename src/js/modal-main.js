@@ -13,7 +13,9 @@ async function onClickCard(e) {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

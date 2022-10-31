@@ -14,9 +14,7 @@ export const getMovie = async page => {
 };
 
 export async function getMovieById(movieId) {
-  const { data } = await axios.get(
-    `/movie/${movieId}?api_key=${API_KEY}&${language}`
-  );
+  const { data } = await axios.get(`/movie/${movieId}?${searchParams}`);
   return data;
 }
 

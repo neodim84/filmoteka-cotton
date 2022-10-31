@@ -5,28 +5,33 @@ export const markupGallery = async results => {
   return results
     .map(
       item =>
-        `<li class="film-gallery__item card">
-            <a href="http://" class="link">
+        `<li class="film-gallery__item card js-film" data-id=${item.id}>
+            <a href="http://" class="link js-film" data-id=${item.id}>
               <img
-                class="film-gallery__img"
+                class="film-gallery__img js-film"
+                data-id=${item.id}
                 src="http://image.tmdb.org/t/p/w780${item.poster_path}"
                 loading='lazy'
                 alt="фото фільма"
               />
-              <div class="film">
-                <h2 class="film__title">${item.title}</h2>
+              <div class="film js-film" data-id=${item.id}>
+                <h2 class="film__title js-film" data-id=${item.id}>${
+          item.title
+        }</h2>
               </div>
-              <div class="film__wrapper">
-                <p class="film__genre film__wrapper-reset">${genreTitle(
-                  item.genre_ids,
-                  genres
-                )}</p>
-                <p class="film__line film__wrapper-reset">|</p>
-                <p class="film__relise film__wrapper-reset">${item.release_date.slice(
-                  0,
-                  4
-                )}</p>
-                  <p class="film__rating visually-hidden film__wrapper-reset">
+              <div class="film__wrapper js-film" data-id=${item.id}>
+                <p class="film__genre film__wrapper-reset js-film" data-id=${
+                  item.id
+                }>${genreTitle(item.genre_ids, genres)}</p>
+                <p class="film__line film__wrapper-reset js-film" data-id=${
+                  item.id
+                }>|</p>
+                <p class="film__relise film__wrapper-reset js-film" data-id=${
+                  item.id
+                }>${item.release_date.slice(0, 4)}</p>
+                  <p class="film__rating visually-hidden film__wrapper-reset js-film" data-id=${
+                    item.id
+                  }>
                     ${item.vote_average}
                   </p>
               </div>
@@ -47,14 +52,21 @@ export function createMarkupModal({
   overview,
   title,
 }) {
-  const imgUrl = `http://image.tmdb.org/t/p/w780/${poster_path}`;
-  const genre = genres.map(item => item.name).join(', ');
+  let imgUrl = 'https://picsum.photos/200/300';
+  if (poster_path !== null) {
+    imgUrl = `http://image.tmdb.org/t/p/w780/${poster_path}`;
+  }
+  let genre = genres.map(item => item.name).join(', ');
+  if (genres.length === 0) {
+    genre = 'Unknown';
+  }
+  if (overview === '') {
+    overview = 'Description coming soon...';
+  }
   return `
-          <ul class="modal__list list">
-          <li class="modal__list__item">
+          <div class="modal__poster__holder">
             <img class="modal__poster" src=${imgUrl} alt="" width="240" />
-          </li>
-          <li class="modal__list__item">
+          </div>
             <div class="modal__info">
               <h2 class="modal__title">${title}</h2>
               <table class="modal__table">
@@ -79,9 +91,7 @@ export function createMarkupModal({
               </table>
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
-              <button type="submit" class="modal__btn--watched modal__btn">Add to watched</button>
-              <button type="submit" class="modal__btn--queue modal__btn">Add to queue</button>
-            </div>
-          </li>
-        </ul>`;
+              <div class="modal__holder__btn"><button type="submit" class="modal__btn--watched modal__btn">add to Watched</button>
+              <button type="submit" class="modal__btn--queue modal__btn">Add to queue</button></div>
+              </div>`;
 }
