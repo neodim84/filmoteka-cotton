@@ -13,10 +13,8 @@ export const getMovie = async page => {
   return data;
 };
 
-const API_KEY = '1529790f4eacb7832167f2a3b202ece3';
-
 export async function getMovieById(movieId) {
-  const { data } = await axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
+  const { data } = await axios.get(`/movie/${movieId}?${searchParams}`);
   return data;
 }
 
