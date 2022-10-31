@@ -1,6 +1,7 @@
 import axios from 'axios';
 import genres from '../json/genres.json';
 import { genreTitle } from './genresSelect';
+import { spinnerStart, spinnerStop } from './spinner';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -15,12 +16,15 @@ formRef.addEventListener('submit', event => {
 
 async function getMoviesList(query) {
   try {
+    spinnerStart();
     const movies = await getMovies(query);
     const { results } = movies;
     localStorage.setItem('currentPage', JSON.stringify(results));
     const markup = createMarkup(results);
     cardsListRef.innerHTML = markup;
+    spinnerStop();
   } catch (error) {
+    spinnerStop();
     console.log(error);
   }
 }

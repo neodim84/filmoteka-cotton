@@ -26,16 +26,15 @@ export const markupGallery = async results => {
                   0,
                   4
                 )}</p>
+                  <p class="film__rating visually-hidden film__wrapper-reset">
+                    ${item.vote_average}
+                  </p>
               </div>
             </a>
           </li>`
     )
     .join('');
 };
-
-//   <p class="film__rating visually-hidden film__wrapper-reset">
-//     ${item.vote_average}
-//   </p>;
 
 // ===============================================
 
@@ -65,7 +64,9 @@ export function createMarkupModal({
                 </tr>
                 <tr>
                   <td>Popularity</td>
-                  <td class="modal__table--popularity">${popularity}</td>
+                  <td class="modal__table--popularity">${popularity.toFixed(
+                    1
+                  )}</td>
                 </tr>
                 <tr>
                   <td>Original Title</td>

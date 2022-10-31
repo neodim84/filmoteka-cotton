@@ -7,8 +7,8 @@ export const genreTitle = (genreID, genres) => {
     arr.push(element);
   }
 
-  if (arr.length > 3) {
-    return (arrToShow = arr.slice(0, 3).join(', ').concat(', Other'));
+  if (arr.length > 2) {
+    return (arrToShow = arr.slice(0, 2).join(', ').concat(', Other'));
   }
 
   return (arrToShow = arr.slice(0, arr.length - 1).join(', '));
