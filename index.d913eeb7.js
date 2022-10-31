@@ -1,2 +1,0 @@
-!function(){document.querySelector(".js-card");var e,r=document.getElementById("#pagination"),t=document.querySelector(".arrow-left"),a=document.querySelector(".arrow-right"),d=1;function o(e){1===d?t.classList.add("disabled-arrow"):t.classList.remove("disabled-arrow"),d===e?a.classList.add("disabled-arrow"):a.classList.remove("disabled-arrow")}r.addEventListener("click",(function(r){if("BUTTON"!=r.target.tagName)return;o(e)}))}();
-//# sourceMappingURL=index.d913eeb7.js.map
