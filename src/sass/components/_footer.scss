@@ -8,7 +8,7 @@ li {
 }
 
 .footer {
-  margin-top: -100px;
+  margin-top: 60px;
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
@@ -46,6 +46,8 @@ br {
 
 .students-modal {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background-color: #f7f7f7;
 }
 
 .students-modal:hover {
