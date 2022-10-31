@@ -3,6 +3,10 @@
 // import axios from 'axios';
 // import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
+import './js/header';
+import './js/gallery';
+import './js/genresSelect';
+import './js/pagination';
 import { refs } from './js/refs';
 import './js/header';
 import './js/gallery';
