@@ -71,11 +71,6 @@
     }
   }
 
-  &.dark-theme {
-    background-color: #333333;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
   &__content {
     @include mq(tablet) {
       display: flex;
