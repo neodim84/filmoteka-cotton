@@ -3,8 +3,7 @@ import Pagination from 'tui-pagination';
 import genres from '../json/genres.json';
 import { genreTitle } from './genresSelect';
 import { container, instance } from './pagination';
-// console.log(container);
-// console.log(instance);
+import { spinnerStart, spinnerStop } from './spinner';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -57,13 +56,15 @@ async function getMoviesList(query) {
   try {
     const movies = await getMoviesAPI(query, page);
     instance.setTotalItems(movies.total_results);
+    spinnerStart();
     const { results } = movies;
     localStorage.setItem('currentPage', JSON.stringify(results));
     notification(results.length);
     const markup = createMarkup(results);
     cardsListRef.innerHTML = markup;
-    console.log(instance);
+    spinnerStop();
   } catch (error) {
+    spinnerStop();
     console.log(error);
   }
 }
