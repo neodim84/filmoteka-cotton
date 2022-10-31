@@ -5,18 +5,6 @@
 .tui-ico-prev {
   overflow: hidden;
 }
-.pagination-wrapper {
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &--fixed {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 120px;
-  }
-}
 
 .tui-pagination {
   height: 28px;
@@ -99,7 +87,6 @@
 }
 
 .tui-pagination .tui-is-disabled:hover {
-  // background: $bg-modal;
   cursor: default;
 }
 
@@ -112,8 +99,5 @@
   }
 }
 .tui-is-disabled .tui-icon-arrow {
-  fill: #ddd;
-}
-.tui-is-disabled .dark-theme .tui-icon-arrow {
   fill: #ddd;
 }
