@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Anton');
 
+// colors:
+// #3d314a #f5f1ed b83013
+
 .loader {
   position: fixed;
   top: 50%;
@@ -8,7 +11,7 @@
 
   &__text {
     margin: 5px auto;
-    color: #3d314a;
+    color: #f5f1ed;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: Anton, sans-serif;
@@ -17,7 +20,7 @@
     position: relative;
     width: 56px;
     height: 70px;
-    background: #3d314a;
+    background: #b83013;
     z-index: -1;
     overflow: hidden;
     &:before,
@@ -44,7 +47,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
 
   @keyframes roll {
