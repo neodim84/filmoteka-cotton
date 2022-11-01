@@ -4,7 +4,6 @@
   height: 100%;
   position: fixed;
   top: 0;
-  background: #cecdcd;
   opacity: 1;
   overflow-y: scroll;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -16,9 +15,32 @@
 }
 /* ----------------------------Modal-window-------------------------------------- */
 .modal {
-  width: 80vw;
-  min-height: 60vh;
-  padding: 40px 20px;
+  margin-top: 40px;
+  min-width: 280px;
+  min-height: 940px;
+
+  @include mq(tablet-only) {
+    min-width: 704px;
+    min-height: 552px;
+  }
+
+  @include mq(desktop) {
+    min-width: 806px;
+    min-height: 558px;
+  }
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @include mq(tablet-only) {
+    padding-left: 36px;
+    padding-right: 72px;
+  }
+
+  @include mq(desktop) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,10 +50,22 @@
   background-color: white;
 }
 
-@media screen and (min-width: 768px) {
-  .modal__list {
-    display: flex;
+.modal__desc {
+  display: flex;
+
+  @include mq(mobile-only) {
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include mq(tablet-only) {
     gap: 68px;
+  }
+
+  @include mq(desktop) {
+    gap: 16px;
   }
 }
 
@@ -39,104 +73,134 @@
   width: 30px;
   height: 30px;
   border: 0px;
-  background-color: white;
+  background-color: transparent;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* .poster {
-  display: block;
-  text-align: center;
-} */
-
 .modal__poster {
-  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
-// @media screen and (min-width: 480px) {
-//   .modal__list__item {
-//     min-width: 240px;
-//   }
-// }
+.modal__poster,
+.modal__info {
+  @include mq(mobile-only) {
+    width: 240px;
+    min-height: 375px;
+  }
 
-// @media screen and (min-width: 768px) {
-//   .modal__list__item {
-//     min-width: 264px;
-//   }
-// }
+  @include mq(tablet-only) {
+    min-width: 264px;
+    min-height: 373px;
+  }
+}
 
-// @media screen and (min-width: 1200px) {
-//   .modal__list__item {
-//     min-width: 375px;
-//   }
-// }
+.modal__poster {
+  @include mq(desktop) {
+    width: 375px;
+  }
+}
+
+.modal__info {
+  @include mq(desktop) {
+    width: 391px;
+  }
+}
 
 .modal__title {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  margin-top: 0px;
+  @include mq(mobile-only) {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  @include mq(desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
 }
 
 table {
-  font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   margin-bottom: 20px;
+}
+
+td {
+  min-width: 115px;
 }
 
 td,
 th {
   color: #8c8c8c;
   padding-left: 0px;
-  padding-right: 40px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-right: 41px;
+  padding-top: 8px;
+
+  @include mq(desktop) {
+    padding-right: 85px;
+  }
 }
+
 .modal__table--vote,
 .modal__table--popularity,
 .modal__table--originalTitle,
 .modal__table--genre {
   color: black;
+  min-width: 120px;
 }
 
 h3 {
-  font-size: 20px;
-  line-height: 1.15;
+  font-size: 12px;
+  line-height: 1.33;
   margin-bottom: 8px;
 }
 
 .modal__text--about {
   font-size: 12px;
   line-height: 1.66;
-  margin-top: 0px;
   margin-bottom: 20px;
 }
 
 .modal__holder__btn {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+
+  @include mq(desktop) {
+    justify-content: flex-start;
+  }
 }
 
 .modal__btn {
   display: inline-block;
-  min-width: 110px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 110px;
   min-height: 44px;
   border: 1px solid transparent;
   border-radius: 5px;
-  text-align: center;
   font-size: 12px;
   line-height: 1, 33;
+
+  @include mq(tablet-only) {
+    width: 125px;
+  }
+
+  @include mq(desktop) {
+    width: 136px;
+  }
 }
 
 .modal__btn--watched {
   color: white;
   background-color: #ff6b01;
-  margin-right: 16px;
+
+  @include mq(desktop) {
+    margin-right: 15px;
+    margin-left: 8px;
+  }
 }
 
 .modal__btn--queue {
