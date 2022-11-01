@@ -1,7 +1,7 @@
 import { genreTitle } from './genresSelect';
 import genres from '../json/genres.json';
 
-// export const markupGallery = async results => {
+// export const markupGallery = results => {
 //   return results
 //     .map(
 //       item =>
@@ -135,7 +135,12 @@ export function createMarkupModal({
               </table>
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
-              <div class="modal__holder__btn"><button type="submit" class="modal__btn--watched modal__btn">add to Watched</button>
-              <button type="submit" class="modal__btn--queue modal__btn">Add to queue</button></div>
-              </div>`;
+              `;
+}
+
+{
+  /* <div class="modal__holder__btn">
+              <button type="button" class="modal__btn--watched modal__btn">add to Watched</button>
+              <button type="button" class="modal__btn--queue modal__btn">Add to queue</button></div>
+              </div> */
 }
