@@ -130,7 +130,7 @@ header {
 
   color: $text-color-lighter;
 
-  margin: 0 0;
+  margin: 0 0 0 10px;
   @include mq(tablet) {
     visibility: visible;
     position: static;
