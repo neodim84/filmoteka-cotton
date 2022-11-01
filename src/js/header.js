@@ -49,7 +49,9 @@ container.addEventListener('click', handleTui);
 function handleTui() {
   page = instance.getCurrentPage();
   // console.log(instance.getCurrentPage());
-  getMoviesList(query);
+  if (query !== '') {
+    getMoviesList(query);
+  }
 }
 
 async function getMoviesList(query) {
