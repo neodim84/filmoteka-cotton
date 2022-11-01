@@ -18,6 +18,7 @@ export const setupUI = user => {
 
 // setup watchedMovies
 export const setupWatchedMovies = data => {
+  console.log(data);
   if (data.length) {
     let html = '';
     data.forEach(doc => {
@@ -53,8 +54,8 @@ export const setupQueueMovies = data => {
     });
     queueMoviesList.innerHTML = html;
   } else {
-    queueMoviesList.innerHTML =
-      '<h5 class="center-align">Login to view your Library</h5>';
+    //     queueMoviesList.innerHTML =
+    //       '<h5 class="center-align">Login to view your Library</h5>';
   }
 };
 
