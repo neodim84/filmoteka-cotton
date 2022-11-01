@@ -1,6 +1,7 @@
 @mixin mq($range) {
   $mobile: 320px;
   $tablet: 768px;
+  $preDesktop: 1024px;
   $desktop: 1280px;
   @if $range == mobile-only {
     @media screen and (max-width: #{$tablet - 0.02}) {
@@ -20,6 +21,10 @@
     }
   } @else if $range == tablet-max {
     @media screen and (max-width: #{$desktop - 0.02}) {
+      @content;
+    }
+  } @else if $range == preDesktop {
+    @media screen and (min-width: $preDesktop) {
       @content;
     }
   } @else if $range == desktop {
