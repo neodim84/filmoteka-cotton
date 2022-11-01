@@ -6,7 +6,7 @@ import './js/header';
 import './js/gallery';
 import './js/modal-main';
 import './js/pagination';
-import './js/footer';
+// import './js/footer';
 import './js/modal-footer';
 // import './js/materialize';
 // import './js/auth';
