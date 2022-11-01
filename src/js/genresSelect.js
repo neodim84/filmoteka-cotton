@@ -6,11 +6,10 @@ export const genreTitle = (genreID, genres) => {
     const element = map[index];
     arr.push(element);
   }
-  let arrToShow = [];
 
   if (arr.length > 2) {
-    return (arrToShow = arr.slice(0, 2).join(', ').concat(', Other'));
+    return arr.slice(0, 2).join(', ').concat(', Other');
   }
 
-  return (arrToShow = arr.slice(0, arr.length - 1).join(', '));
+  return arr.slice(0, arr.length - 1).join(', ');
 };
