@@ -157,6 +157,16 @@ header {
   text-transform: uppercase;
 
   color: $text-color-lighter;
+  transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.header__menu__item a:hover,
+.header__menu__item a:focus {
+  transform: scale(1.2);
+}
+
+.form-field {
+  position: relative;
 }
 
 .header__form__input {
@@ -175,6 +185,18 @@ header {
   @include mq(tablet) {
     width: 336px;
   }
+}
+
+.input-button {
+  position: absolute;
+  right: 0%;
+  transform: translateY(-100%);
+  display: block;
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .header__notif {
