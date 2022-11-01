@@ -4,7 +4,8 @@ import { refs } from './refs';
 
 async function onClickCard(e) {
   e.preventDefault();
-  if (e.target.classList.contains('js-film')) {
+  const elt = e.target.closest('.film-gallery__list');
+  if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
     refs.modal.classList.toggle('is-hidden');
@@ -15,7 +16,7 @@ async function onClickCard(e) {
 
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
 }
