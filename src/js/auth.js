@@ -48,6 +48,16 @@ function handleAddToWatched(e) {
     });
 }
 
+// project cotton add to watched
+const watchedLib = document.querySelector('.film-gallery__list');
+const addToWatchedBtn = document.querySelector('.modal__btn--watched');
+console.log(addToWatchedBtn);
+addToWatchedBtn.addEventListener('click', cottonAddToWatched);
+
+function cottonAddToWatched(e) {
+  console.log(e);
+}
+
 // create new guide (add to queue)
 // const createForm = document.querySelector('#create-form');
 createForm.addEventListener('submit', handleAddToQueue);
