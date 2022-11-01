@@ -1,52 +1,11 @@
 import { genreTitle } from './genresSelect';
 import genres from '../json/genres.json';
 
-// export const markupGallery = results => {
-//   return results
-//     .map(
-//       item =>
-//         `<li class="film-gallery__item card js-film" data-id=${item.id}>
-//             <a href="http://" class="link js-film" data-id=${item.id}>
-//               <img
-//                 class="film-gallery__img js-film"
-//                 data-id=${item.id}
-//                 src="http://image.tmdb.org/t/p/w780${item.poster_path}"
-//                 loading='lazy'
-//                 alt="фото фільма"
-//               />
-//               <div class="film js-film" data-id=${item.id}>
-//                 <h2 class="film__title js-film" data-id=${item.id}>${
-//           item.title
-//         }</h2>
-//               </div>
-//               <div class="film__wrapper js-film" data-id=${item.id}>
-//                 <p class="film__genre film__wrapper-reset js-film" data-id=${
-//                   item.id
-//                 }>${genreTitle(item.genre_ids, genres)}</p>
-//                 <p class="film__line film__wrapper-reset js-film" data-id=${
-//                   item.id
-//                 }>|</p>
-//                 <p class="film__relise film__wrapper-reset js-film" data-id=${
-//                   item.id
-//                 }>${item.release_date.slice(0, 4)}</p>
-//                   <p class="film__rating visually-hidden film__wrapper-reset js-film" data-id=${
-//                     item.id
-//                   }>
-//                     ${item.vote_average}
-//                   </p>
-//               </div>
-//             </a>
-//           </li>`
-//     )
-//     .join('');
-// };
-
-export const markupGallery = async results => {
-  try {
-    return await results
-      .map(
-        item =>
-          `<li class="film-gallery__item card js-film" data-id=${item.id}>
+export const markupGallery = results => {
+  return results
+    .map(
+      item =>
+        `<li class="film-gallery__item card js-film" data-id=${item.id}>
             <a href="http://" class="link js-film" data-id=${item.id}>
               <img
                 class="film-gallery__img js-film"
@@ -57,8 +16,8 @@ export const markupGallery = async results => {
               />
               <div class="film js-film" data-id=${item.id}>
                 <h2 class="film__title js-film" data-id=${item.id}>${
-            item.title
-          }</h2>
+          item.title
+        }</h2>
               </div>
               <div class="film__wrapper js-film" data-id=${item.id}>
                 <p class="film__genre film__wrapper-reset js-film" data-id=${
@@ -78,12 +37,53 @@ export const markupGallery = async results => {
               </div>
             </a>
           </li>`
-      )
-      .join('');
-  } catch (error) {
-    console.log(error);
-  }
+    )
+    .join('');
 };
+
+// export const markupGallery = async results => {
+//   try {
+//     return await results
+//       .map(
+//         item =>
+//           `<li class="film-gallery__item card js-film" data-id=${item.id}>
+//             <a href="http://" class="link js-film" data-id=${item.id}>
+//               <img
+//                 class="film-gallery__img js-film"
+//                 data-id=${item.id}
+//                 src="http://image.tmdb.org/t/p/w780${item.poster_path}"
+//                 loading='lazy'
+//                 alt="фото фільма"
+//               />
+//               <div class="film js-film" data-id=${item.id}>
+//                 <h2 class="film__title js-film" data-id=${item.id}>${
+//             item.title
+//           }</h2>
+//               </div>
+//               <div class="film__wrapper js-film" data-id=${item.id}>
+//                 <p class="film__genre film__wrapper-reset js-film" data-id=${
+//                   item.id
+//                 }>${genreTitle(item.genre_ids, genres)}</p>
+//                 <p class="film__line film__wrapper-reset js-film" data-id=${
+//                   item.id
+//                 }>|</p>
+//                 <p class="film__relise film__wrapper-reset js-film" data-id=${
+//                   item.id
+//                 }>${item.release_date.slice(0, 4)}</p>
+//                   <p class="film__rating visually-hidden film__wrapper-reset js-film" data-id=${
+//                     item.id
+//                   }>
+//                     ${item.vote_average}
+//                   </p>
+//               </div>
+//             </a>
+//           </li>`
+//       )
+//       .join('');
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 // ===============================================
 
