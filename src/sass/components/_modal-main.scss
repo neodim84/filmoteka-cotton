@@ -174,10 +174,10 @@ h3 {
 
 .modal__holder__btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 
-  @include mq(desktop) {
-    justify-content: flex-start;
+  @include mq(mobile-only) {
+    justify-content: space-between;
   }
 }
 
@@ -205,7 +205,7 @@ h3 {
   color: white;
   background-color: #ff6b01;
 
-  @include mq(desktop) {
+  @include mq(tablet) {
     margin-right: 15px;
     margin-left: 8px;
   }
