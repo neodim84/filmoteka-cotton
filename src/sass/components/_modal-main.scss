@@ -76,7 +76,7 @@
     gap: 68px;
   }
 
-  @include mq(desktop) {
+  @include mq(preDesktop) {
     gap: 16px;
   }
 }
@@ -175,6 +175,11 @@ h3 {
   font-size: 12px;
   line-height: 1.66;
   margin-bottom: 20px;
+  overflow-y: scroll;
+
+  @include mq(mobile-only) {
+    height: 236px;
+  }
 }
 
 .modal__holder__btn {
