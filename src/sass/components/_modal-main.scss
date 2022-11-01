@@ -15,6 +15,10 @@
   transform: translate(-50%, -50%) scale(0.5);
 }
 /* ----------------------------Modal-window-------------------------------------- */
+.modal {
+  background-color: #fff;
+}
+
 .modal-main {
   min-width: 280px;
   min-height: 940px;
