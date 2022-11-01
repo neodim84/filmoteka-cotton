@@ -14,3 +14,5 @@ import './js/modal-main';
 import './js/pagination';
 import { spinnerStart, spinnerStop } from './js/spinner';
 import './js/footer';
+// import './js/materialize';
+// import './js/auth';
