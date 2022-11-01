@@ -1,7 +1,7 @@
 import { genreTitle } from './genresSelect';
 import genres from '../json/genres.json';
 
-export const markupGallery = async results => {
+export const markupGallery = results => {
   return results
     .map(
       item =>
