@@ -4,6 +4,7 @@ export const refs = {
   modalList: document.querySelector('.modal__desc'),
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
+  btnAddWatched: document.querySelector('.modal__btn'),
 };
 
 // const refs = {
