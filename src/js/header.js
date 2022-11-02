@@ -66,7 +66,7 @@ function notification(length) {
     const timerId = setTimeout(() => {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
-    instance.reset();
+    instance.reset(1000);
     getTrending(1);
   }
 }
