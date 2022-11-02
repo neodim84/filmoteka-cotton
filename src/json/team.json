@@ -1,0 +1,84 @@
+[
+  {
+    "name": "Dmytro Tashpikov",
+    "img": "Dmytro_Tashpikov.jpg",
+    "github": "https://github.com/neodim84",
+    "role": "Team Lead"
+  },
+
+  {
+    "name": "Alla Yukhymenko",
+    "img": "Alla_Yukhymenko.jpeg",
+    "github": "https://github.com/AllaYukhym",
+    "role": "Scrum Master"
+  },
+
+  {
+    "name": "Alekhandr Lago",
+    "img": "Alekhandro_Lago.jpg",
+    "github": "https://github.com/Alekhandro24",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Arthur S",
+    "img": "Arthur_S.jpg",
+    "github": "https://github.com/Arthurosh",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Dima Viatkovskiy",
+    "img": "Dima_Viatkovskiy.jpg",
+    "github": "https://github.com/dima2605",
+    "role": "Developer"
+  },
+  {
+    "name": "Dmytro Tashpikov",
+    "img": "Dmytro_Tashpikov.jpg",
+    "github": "https://github.com/neodim84",
+    "role": "Team Lead"
+  },
+
+  {
+    "name": "Ievgen Vorontsov",
+    "img": "Ievgen_Vorontsov.jpeg",
+    "github": "https://github.com/Vorontsov1",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Khrystyna",
+    "img": "Khrystyna.jpg",
+    "github": "https://github.com/Khryyystyna",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Oleksandr Diachenko",
+    "img": "Oleksandr_Diachenko.jpg",
+    "github": "https://github.com/Pallich",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Oleksandr Litvin",
+    "img": "Oleksandr_Litvin.jpeg",
+    "github": "https://github.com/Oleksandr-Lytvyn",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Vitalii Sapunov",
+    "img": "Vitalii_Sapunov.jpg",
+    "github": "https://github.com/Vi7ality",
+    "role": "Developer"
+  },
+
+  {
+    "name": "Volodymyr Kurov",
+    "img": "Volodymyr_Kurov.jpeg",
+    "github": "https://github.com/vokur13",
+    "role": "Developer"
+  }
+]
