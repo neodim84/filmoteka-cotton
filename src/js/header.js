@@ -4,6 +4,7 @@ import genres from '../json/genres.json';
 import { genreTitle } from './genresSelect';
 import { container, instance } from './pagination';
 import { spinnerStart, spinnerStop } from './spinner';
+import { getTrending } from './gallery';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -66,6 +67,7 @@ function notification(length) {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
     instance.reset();
+    getTrending(1);
   }
 }
 
