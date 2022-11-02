@@ -11,6 +11,7 @@ async function onClickCard(e) {
     refs.modal.classList.toggle('is-hidden');
     refs.body.classList.toggle('no-scroll');
     refs.btnAddWatched.setAttribute('data-id', movieId);
+    refs.btnAddQueue.setAttribute('data-id', movieId);
     try {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
