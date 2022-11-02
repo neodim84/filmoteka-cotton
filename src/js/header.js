@@ -38,7 +38,7 @@ function handleTui() {
 async function getMoviesList(query) {
   try {
     const movies = await getMoviesAPI(query, page);
-    instance.reset(movies.total_results);
+    instance.setTotalItems(movies.total_results);
     spinnerStart();
     const { results } = movies;
     localStorage.setItem('currentPage', JSON.stringify(results));
