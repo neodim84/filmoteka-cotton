@@ -135,7 +135,7 @@ export function createMarkupModal({
               </table>
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
-              `;
+              </div>`;
 }
 
 {

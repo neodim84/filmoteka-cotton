@@ -15,13 +15,13 @@
   transform: translate(-50%, -50%) scale(0.5);
 }
 /* ----------------------------Modal-window-------------------------------------- */
-.modal {
-  background-color: #fff;
-}
 
 .modal-main {
+  background-color: #fff;
   min-width: 280px;
   min-height: 940px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   @include mq(mobile-only) {
     position: absolute;
@@ -32,22 +32,13 @@
   @include mq(tablet-only) {
     min-width: 704px;
     min-height: 552px;
+    padding-left: 36px;
+    padding-right: 72px;
   }
 
   @include mq(preDesktop) {
     min-width: 806px;
     min-height: 558px;
-  }
-
-  padding-top: 40px;
-  padding-bottom: 40px;
-
-  @include mq(tablet-only) {
-    padding-left: 36px;
-    padding-right: 72px;
-  }
-
-  @include mq(desktop) {
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -76,7 +67,7 @@
     gap: 68px;
   }
 
-  @include mq(desktop) {
+  @include mq(preDesktop) {
     gap: 16px;
   }
 }
@@ -105,20 +96,20 @@
     min-height: 375px;
   }
 
-  @include mq(tablet-only) {
+  @include mq(tablet) {
     min-width: 264px;
     min-height: 373px;
   }
 }
 
 .modal__poster {
-  @include mq(desktop) {
-    width: 375px;
+  @include mq(preDesktop) {
+    min-width: 375px;
   }
 }
 
 .modal__info {
-  @include mq(desktop) {
+  @include mq(preDesktop) {
     width: 391px;
   }
 }
@@ -175,14 +166,27 @@ h3 {
   font-size: 12px;
   line-height: 1.66;
   margin-bottom: 20px;
+  height: 236px;
+  overflow-y: scroll;
+
+  @include mq(preDesktop) {
+    min-height: 160px;
+  }
 }
 
 .modal__holder__btn {
   display: flex;
-  justify-content: flex-start;
 
   @include mq(mobile-only) {
     justify-content: space-between;
+  }
+
+  @include mq(tablet) {
+    justify-content: flex-end;
+  }
+
+  @include mq(preDesktop) {
+    justify-content: flex-end;
   }
 }
 
@@ -209,6 +213,9 @@ h3 {
 .modal__btn--watched {
   color: white;
   background-color: #ff6b01;
+  @include mq(mobile-only) {
+    margin-left: 20px;
+  }
 
   @include mq(tablet) {
     margin-right: 15px;
@@ -219,6 +226,14 @@ h3 {
 .modal__btn--queue {
   border: 1px solid #000000;
   color: black;
+
+  @include mq(mobile-only) {
+    margin-right: 20px;
+  }
+
+  @include mq(preDesktop) {
+    margin-right: 108px;
+  }
 }
 
 .is-hidden {
