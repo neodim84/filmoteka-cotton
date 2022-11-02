@@ -102,7 +102,7 @@ export function createMarkupModal({
   }
 
   if (genres.length === 0) {
-    genre = 'Unknown';
+    genre = 'No info';
   }
   if (overview === '') {
     overview = 'Description coming soon...';

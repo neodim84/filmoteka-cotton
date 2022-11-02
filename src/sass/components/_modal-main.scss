@@ -36,7 +36,7 @@
     padding-right: 72px;
   }
 
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     min-width: 806px;
     min-height: 558px;
     padding-left: 12px;
@@ -67,7 +67,7 @@
     gap: 68px;
   }
 
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     gap: 16px;
   }
 }
@@ -97,19 +97,19 @@
   }
 
   @include mq(tablet) {
-    min-width: 264px;
+    width: 264px;
     min-height: 373px;
   }
 }
 
 .modal__poster {
-  @include mq(preDesktop) {
-    min-width: 375px;
+  @include mq(desktop) {
+    width: 375px;
   }
 }
 
 .modal__info {
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     width: 391px;
   }
 }
@@ -169,7 +169,7 @@ h3 {
   height: 236px;
   overflow-y: scroll;
 
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     min-height: 160px;
   }
 }
@@ -185,7 +185,7 @@ h3 {
     justify-content: flex-end;
   }
 
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     justify-content: flex-end;
   }
 }
@@ -231,7 +231,7 @@ h3 {
     margin-right: 20px;
   }
 
-  @include mq(preDesktop) {
+  @include mq(desktop) {
     margin-right: 108px;
   }
 }
