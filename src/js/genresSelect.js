@@ -7,9 +7,13 @@ export const genreTitle = (genreID, genres) => {
     arr.push(element);
   }
 
-  if (arr.length > 2) {
-    return arr.slice(0, 2).join(', ').concat(', Other');
+  if (arr.length <= 3) {
+    return arr.slice(0, arr.length - 1).join(', ');
   }
+  return arr.slice(0, 2).join(', ').concat(', Other');
+  //   if (arr.length > 3) {
+  //     return arr.slice(0, 3).join(', ').concat(', Other');
+  //   }
 
-  return arr.slice(0, arr.length - 1).join(', ');
+  //   arr.slice(0, arr.length - 1).join(', ');
 };
