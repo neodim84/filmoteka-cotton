@@ -1,2 +1,0 @@
-var studentsModalBtn=document.querySelector(".students-modal"),modalWindow=document.querySelector(".backdrop"),modalClose=document.querySelector(".button-modal");function onModalOpen(o){modalWindow.classList.remove("is-hidden")}function onModalClose(o){modalWindow.classList.add("is-hidden")}function onKeyPress(o){"Escape"===o.code&&onModalClose()}studentsModalBtn.addEventListener("click",onModalOpen),modalClose.addEventListener("click",onModalClose);
-//# sourceMappingURL=library.63bdeba6.js.map
