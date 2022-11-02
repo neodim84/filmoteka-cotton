@@ -18,6 +18,8 @@ formRef.addEventListener('submit', event => {
   const { searchQuery } = event.currentTarget;
   const newQuery = searchQuery.value.trim().toLowerCase();
   if (query !== newQuery) {
+    page = 1;
+    instance.reset();
     query = newQuery;
   }
   getMoviesList(query);
@@ -63,6 +65,7 @@ function notification(length) {
     const timerId = setTimeout(() => {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
+    instance.reset();
   }
 }
 
