@@ -27,7 +27,6 @@ async function onClickCard(e) {
   // if (e.target.classList.contains('js-film')) {
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
-
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
