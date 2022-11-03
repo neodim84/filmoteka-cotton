@@ -12,6 +12,7 @@ console.log('watchLib', watchLib);
 let watched = [];
 
 async function onClickCard(e) {
+  window.addEventListener('keydown', onEscKey);
 
   const { id } = e.target.dataset;
 
@@ -50,7 +51,6 @@ async function onClickCard(e) {
 }
 
 function onCloseBtn() {
-  window.addEventListener('keydown', onEscKey);
   refs.modal.classList.toggle('is-hidden');
   refs.body.classList.toggle('no-scroll');
   
@@ -66,7 +66,7 @@ function onBackdropClick(e) {
 function onEscKey(e) {
   if (e.code === 'Escape') {
     onCloseBtn();
-    // window.removeEventListener('keydown', onEscKey);
+    window.removeEventListener('keydown', onEscKey);
   }
 }
 
