@@ -5,6 +5,8 @@ export const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   btnAddWatched: document.querySelector('.modal__btn'),
+  libraryList: document.querySelector('.film-library__list'),
+  btnWatched: document.querySelector('.library__btn--watched'),
 };
 
 // const refs = {

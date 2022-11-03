@@ -5,6 +5,7 @@ import './js/pagination';
 import './js/header';
 import './js/gallery';
 import './js/modal-main';
+import './js/library';
 import './js/pagination';
 // import './js/footer';
 import './js/modal-footer';
