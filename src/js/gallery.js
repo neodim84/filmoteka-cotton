@@ -7,11 +7,13 @@ const refs = {
   trend: document.querySelector('.film-gallery__list'),
 };
 
+
 const GALLERY_KEY = 'gallery';
 
 // initPage();
 
-async function getTrending(data) {
+export async function getTrending(data) {
+
   try {
     const movies = await API.getMovie(data);
     const { results } = movies;
