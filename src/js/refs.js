@@ -6,7 +6,7 @@ export const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   btnAddWatched: document.querySelector('.modal__btn--watched'),
   btnAddQueue: document.querySelector('.modal__btn--queue'),
-  btnLibraryWatched: document.querySelector('.library__btn--watched'),
+  btnWatched: document.querySelector('.library__btn--watched'),
   libraryList: document.querySelector('.library__list'),
   backdropModal: document.querySelector('.backdrop-modal'),
   modalWindow: document.querySelector('.backdrop-footer'),

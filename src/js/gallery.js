@@ -7,16 +7,15 @@ const refs = {
   trend: document.querySelector('.film-gallery__list'),
 };
 
-
 const GALLERY_KEY = 'gallery';
 
 // initPage();
 
 export async function getTrending(data) {
-
   try {
     const movies = await API.getMovie(data);
     const { results } = movies;
+    localStorage.setItem('moviesInfo', JSON.stringify(results));
     console.log('results', results);
     save(GALLERY_KEY, results);
     refs.trend.innerHTML = '';
