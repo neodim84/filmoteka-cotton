@@ -27,7 +27,7 @@ async function onClickCard(e) {
 
     //     localStorage.setItem(WATCHED_KEY, JSON.stringify(watched));
   }
-  if (e.target.classList.contains('js-film')) {
+  // if (e.target.classList.contains('js-film')) {
 
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
@@ -50,10 +50,26 @@ async function onClickCard(e) {
 }
 
 function onCloseBtn() {
+  window.addEventListener('keydown', onEscKey);
   refs.modal.classList.toggle('is-hidden');
   refs.body.classList.toggle('no-scroll');
+  
   refs.modalList.innerHTML = '';
+}
+
+function onBackdropClick(e) {
+  if (e.currentTarget === e.target) {
+    onCloseBtn();
+  }
+}
+
+function onEscKey(e) {
+  if (e.code === 'Escape') {
+    onCloseBtn();
+    // window.removeEventListener('keydown', onEscKey);
+  }
 }
 
 refs.closeModalBtn.addEventListener('click', onCloseBtn);
 refs.cardMovie.addEventListener('click', onClickCard);
+refs.backdropModal.addEventListener('click', onBackdropClick);
