@@ -6,19 +6,26 @@ import { save } from '../utils/storage';
 const WATCHED_KEY = 'watched';
 
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
+const watchLib = document.querySelector('.library__btn');
+console.log('watchLib', watchLib);
 
 let watched = [];
 
 async function onClickCard(e) {
 
   const { id } = e.target.dataset;
-  console.log('watched', watched);
+
+  const savedWatched = localStorage.getItem(WATCHED_KEY);
+  const parsedWatched = JSON.parse(savedWatched);
+  console.log('parsedWatched', parsedWatched);
+
   function addToWatch() {
     console.log('id inside onClick', id);
-    //     save(WATCHED_KEY, id);
-    watched.push(id);
-    //     watched.push(id);
-    localStorage.setItem(WATCHED_KEY, JSON.stringify(watched));
+    if (!parsedWatched) {
+      watched.push(id);
+    }
+
+    //     localStorage.setItem(WATCHED_KEY, JSON.stringify(watched));
   }
   if (e.target.classList.contains('js-film')) {
 
