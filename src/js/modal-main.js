@@ -7,7 +7,7 @@ const WATCHED_KEY = 'watched';
 
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
 
-const watched = [];
+let watched = [];
 
 async function onClickCard(e) {
   const { id } = e.target.dataset;
