@@ -8,7 +8,6 @@ const WATCHED_KEY = 'watched';
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
 
 let watched = [];
-
 async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 

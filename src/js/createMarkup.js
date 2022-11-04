@@ -122,7 +122,6 @@ export function createMarkupLibrary(results) {
     )
     .join('');
 }
-// ===============================================
 
 export function createMarkupModal({
   genres,
@@ -175,11 +174,4 @@ export function createMarkupModal({
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
               </div>`;
-}
-
-{
-  /* <div class="modal__holder__btn">
-              <button type="button" class="modal__btn--watched modal__btn">add to Watched</button>
-              <button type="button" class="modal__btn--queue modal__btn">Add to queue</button></div>
-              </div> */
 }

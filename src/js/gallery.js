@@ -16,9 +16,7 @@ export async function getTrending(data) {
     const movies = await API.getMovie(data);
     const { results } = movies;
     console.log('results', results);
-    localStorage.setItem('moviesInfo', JSON.stringify(results));
-
-    // save(GALLERY_KEY, results);
+    save(GALLERY_KEY, results);
     refs.trend.innerHTML = '';
     return (refs.trend.innerHTML = await markupGallery(results));
   } catch (error) {
