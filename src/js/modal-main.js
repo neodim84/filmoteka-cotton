@@ -2,16 +2,22 @@ import * as API from './api';
 import { createMarkupModal } from './createMarkup';
 import { refs } from './refs';
 import { save, load } from '../utils/storage';
-import AddToDataBtn from './addToDataBtn';
+// import AddToDataBtn from './addToDataBtn';
 
-const addToWatchedBtn = new AddToDataBtn({
-  selector: '[data-action="add_to_watched"]',
-  hidden: false,
-});
-const addToQueuedBtn = new AddToDataBtn({
-  selector: '[data-action="add_to_queue"]',
-  hidden: false,
-});
+// const addToWatchedBtn = new AddToDataBtn({
+//   selector: '[data-action="add_to_watched"]',
+//   hidden: false,
+// });
+// const addToQueuedBtn = new AddToDataBtn({
+//   selector: '[data-action="add_to_queue"]',
+//   hidden: false,
+// });
+
+const addToWatchedBtn = document.querySelector('.modal__btn--watched');
+
+const addToQueuedBtn = document.querySelector('.modal__btn--queue');
+
+console.log(addToWatchedBtn);
 
 const TREND_KEY = 'trend';
 const WATCHED_KEY = 'watched';
@@ -36,12 +42,13 @@ async function onClickCard(e) {
       return save(WATCHED_KEY, watched);
     }
     watched = load(WATCHED_KEY);
+    //    prevState.todos.filter(todo => todo.id !== todoId),
     const some = watched.some(item => item.id !== idNum);
-    watched.forEach(element => {
-      if (element.id !== idNum) {
-        watched.push(trend.find(item => item.id === idNum));
-      }
-    });
+    //     watched.forEach(element => {
+    //       if (element.id !== idNum) {
+    //         watched.push(trend.find(item => item.id === idNum));
+    //       }
+    //     });
   };
 
   const addToQueue = () => {
@@ -58,8 +65,8 @@ async function onClickCard(e) {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
-      addToWatchedBtn.refs.button.addEventListener('click', addToWatched);
-      addToQueuedBtn.refs.button.addEventListener('click', addToQueue);
+      addToWatchedBtn.addEventListener('click', addToWatched);
+      addToQueuedBtn.addEventListener('click', addToQueue);
     } catch (error) {
       console.log(error);
     }
