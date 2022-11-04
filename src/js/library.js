@@ -2,16 +2,15 @@ import { refs } from './refs';
 import { createMarkupLibrary } from './createMarkup';
 
 console.log('in onClickWatched');
-function console() {}
 function onClickWatched() {
   console.log('in onClickWatched');
 
-  const moviesLibrary = localStorage.getItem('moviesLibrary');
-  const parsedMoviesLibrary = JSON.parse(moviesLibrary);
-  if (!parsedMoviesLibrary.length === 0) {
+  const moviesWatched = localStorage.getItem(WATCHED_KEY);
+  const parsedMoviesWatched = JSON.parse(moviesWatched);
+  if (!parsedMoviesWatched.length === 0) {
     refs.libraryTitle.classList.add('visually-hidden');
     refs.libraryList.innerHTML = '';
-    const markupLibrary = createMarkupLibrary(parsedMoviesLibrary);
+    const markupLibrary = createMarkupLibrary(parsedMoviesWatched);
     refs.libraryList.insertAdjacentHTML('beforeend', markupLibrary);
   }
 }
