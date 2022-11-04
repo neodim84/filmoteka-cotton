@@ -46,31 +46,29 @@ export const markupGallery = async results => {
     return await results
       .map(
         item =>
-          `<li class="film-gallery__item card js-film" data-id=${item.id}>
-            <a href="http://" class="link js-film" data-id=${item.id}>
+          `<li class="film-gallery__item card" data-id=${item.id}>
+            <a href="http://" class="link" data-id=${item.id}>
               <img
-                class="film-gallery__img js-film"
+                class="film-gallery__img"
                 data-id=${item.id}
                 src="http://image.tmdb.org/t/p/w780${item.poster_path}"
                 loading='lazy'
                 alt="фото фільма"
               />
-              <div class="film js-film" data-id=${item.id}>
-                <h2 class="film__title js-film" data-id=${item.id}>${
-            item.title
-          }</h2>
+              <div class="film" data-id=${item.id}>
+                <h2 class="film__title" data-id=${item.id}>${item.title}</h2>
               </div>
-              <div class="film__wrapper js-film" data-id=${item.id}>
-                <p class="film__genre film__wrapper-reset js-film" data-id=${
+              <div class="film__wrapper" data-id=${item.id}>
+                <p class="film__genre film__wrapper-reset" data-id=${
                   item.id
                 }>${genreTitle(item.genre_ids, genres)}</p>
-                <p class="film__line film__wrapper-reset js-film" data-id=${
+                <p class="film__line film__wrapper-reset" data-id=${
                   item.id
                 }>|</p>
-                <p class="film__relise film__wrapper-reset js-film" data-id=${
+                <p class="film__relise film__wrapper-reset" data-id=${
                   item.id
                 }>${item.release_date.slice(0, 4)}</p>
-                  <p class="film__rating visually-hidden film__wrapper-reset js-film" data-id=${
+                  <p class="film__rating visually-hidden film__wrapper-reset" data-id=${
                     item.id
                   }>
                     ${item.vote_average}
@@ -87,6 +85,45 @@ export const markupGallery = async results => {
 
 // ===============================================
 
+export function createMarkupLibrary(results) {
+  return results
+    .map(
+      item =>
+        `<li class="film-gallery__item card" data-id=${item.id}>
+            <a href="http://" class="link" data-id=${item.id}>
+              <img
+                class="film-gallery__img"
+                data-id=${item.id}
+                src="http://image.tmdb.org/t/p/w780${item.poster_path}"
+                loading='lazy'
+                alt="фото фільма"
+              />
+              <div class="film" data-id=${item.id}>
+                <h2 class="film__title" data-id=${item.id}>${item.title}</h2>
+              </div>
+              <div class="film__wrapper" data-id=${item.id}>
+                <p class="film__genre film__wrapper-reset" data-id=${
+                  item.id
+                }>${genreTitle(item.genre_ids, genres)}</p>
+                <p class="film__line film__wrapper-reset" data-id=${
+                  item.id
+                }>|</p>
+                <p class="film__relise film__wrapper-reset" data-id=${
+                  item.id
+                }>${item.release_date.slice(0, 4)}</p>
+                  <p class="film__rating visually-hidden film__wrapper-reset" data-id=${
+                    item.id
+                  }>
+                    ${item.vote_average}
+                  </p>
+              </div>
+            </a>
+          </li>`
+    )
+    .join('');
+}
+
+// =============================================================================
 export function createMarkupModal({
   genres,
   original_title,
@@ -97,12 +134,14 @@ export function createMarkupModal({
   title,
 }) {
   let imgUrl = 'https://picsum.photos/200/300';
+  let genre = genres.map(item => item.name).join(', ');
+
   if (poster_path !== null) {
     imgUrl = `http://image.tmdb.org/t/p/w780/${poster_path}`;
   }
-  let genre = genres.map(item => item.name).join(', ');
+
   if (genres.length === 0) {
-    genre = 'Unknown';
+    genre = 'No info';
   }
   if (overview === '') {
     overview = 'Description coming soon...';
@@ -135,12 +174,5 @@ export function createMarkupModal({
               </table>
               <h3>ABOUT</h3>
               <p class="modal__text--about">${overview}</p>
-              `;
-}
-
-{
-  /* <div class="modal__holder__btn">
-              <button type="button" class="modal__btn--watched modal__btn">add to Watched</button>
-              <button type="button" class="modal__btn--queue modal__btn">Add to queue</button></div>
-              </div> */
+              </div>`;
 }

@@ -4,6 +4,7 @@ import genres from '../json/genres.json';
 import { genreTitle } from './genresSelect';
 import { container, instance } from './pagination';
 import { spinnerStart, spinnerStop } from './spinner';
+import { getTrending } from './gallery';
 
 const formRef = document.querySelector('.header__form');
 const cardsListRef = document.querySelector('.film-gallery__list');
@@ -18,6 +19,8 @@ formRef.addEventListener('submit', event => {
   const { searchQuery } = event.currentTarget;
   const newQuery = searchQuery.value.trim().toLowerCase();
   if (query !== newQuery) {
+    page = 1;
+    instance.reset();
     query = newQuery;
   }
   getMoviesList(query);
@@ -63,6 +66,8 @@ function notification(length) {
     const timerId = setTimeout(() => {
       notifRef.classList.remove('header__notif--visible');
     }, 3000);
+    instance.reset(1000);
+    getTrending(1);
   }
 }
 
