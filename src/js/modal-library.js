@@ -12,8 +12,6 @@ async function onCardLibrary(e) {
 
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
-    console.log(movieId);
-    console.log(refs.modal);
     refs.modal.classList.toggle('is-hidden');
     refs.body.classList.toggle('no-scroll');
     refs.btnAddWatched.setAttribute('data-id', movieId);
