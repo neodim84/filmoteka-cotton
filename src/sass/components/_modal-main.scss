@@ -180,7 +180,7 @@ h3 {
 
 .modal__holder__btn {
   display: flex;
-
+  
   @include mq(mobile-only) {
     justify-content: space-between;
   }
