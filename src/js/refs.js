@@ -13,6 +13,7 @@ export const refs = {
   studentsModalBtn: document.querySelector('.students-modal'),
   modalClose: document.querySelector('.team-modal__close-btn'),
   teamList: document.querySelector('.team__list'),
+  libraryTitle: document.querySelector('.libary__title'),
 };
 
 // const refs = {

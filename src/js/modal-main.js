@@ -8,14 +8,11 @@ const WATCHED_KEY = 'watched';
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
 
 let watched = [];
-
 async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 
   const { id } = e.target.dataset;
 
-  //   const savedWatched = localStorage.getItem(WATCHED_KEY);
-  //   const parsedWatched = JSON.parse(savedWatched);
   if (load(WATCHED_KEY)) {
     watched = [...load(WATCHED_KEY)];
   }
@@ -24,10 +21,8 @@ async function onClickCard(e) {
     save(WATCHED_KEY, watched);
   }
 
-  // if (e.target.classList.contains('js-film')) {
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
-
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
