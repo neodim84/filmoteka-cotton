@@ -1,8 +1,10 @@
 import { refs } from './refs';
 import { createMarkupLibrary } from './createMarkup';
 
+console.log('in onClickWatched');
+function console() {}
 function onClickWatched() {
-  // console.log('in onClickWatched');
+  console.log('in onClickWatched');
 
   const moviesLibrary = localStorage.getItem('moviesLibrary');
   const parsedMoviesLibrary = JSON.parse(moviesLibrary);
