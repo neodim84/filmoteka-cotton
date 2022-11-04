@@ -1,36 +1,25 @@
 import * as API from './api';
 import { markupGallery } from './createMarkup';
 import { instance, container } from './pagination';
-import { save } from '../utils/storage';
+import { save, remove } from '../utils/storage';
 
 const refs = {
   trend: document.querySelector('.film-gallery__list'),
 };
 
-const GALLERY_KEY = 'gallery';
-
-// initPage();
+const TREND_KEY = 'trend';
 
 export async function getTrending(data) {
   try {
     const movies = await API.getMovie(data);
     const { results } = movies;
-    console.log('results', results);
-    save(GALLERY_KEY, results);
+    save(TREND_KEY, results);
     refs.trend.innerHTML = '';
     return (refs.trend.innerHTML = await markupGallery(results));
   } catch (error) {
     console.log(error);
   }
 }
-
-// async function initPage() {
-//   try {
-//     remove(GALLERY_KEY);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 getTrending(1);
 
