@@ -1,18 +1,22 @@
+import { load } from '../utils/storage';
 import { refs } from './refs';
 import { createMarkupLibrary } from './createMarkup';
 
-console.log('in onClickWatched');
+console.log(refs.btnWatched);
+
 function onClickWatched() {
   console.log('in onClickWatched');
 
-  const moviesWatched = localStorage.getItem(WATCHED_KEY);
-  const parsedMoviesWatched = JSON.parse(moviesWatched);
-  if (!parsedMoviesWatched.length === 0) {
-    refs.libraryTitle.classList.add('visually-hidden');
-    refs.libraryList.innerHTML = '';
-    const markupLibrary = createMarkupLibrary(parsedMoviesWatched);
-    refs.libraryList.insertAdjacentHTML('beforeend', markupLibrary);
+  const moviesWatched = load('watched');
+  console.log(moviesWatched);
+  console.log(moviesWatched.length);
+  console.log(refs.titleLibrary);
+  if (moviesWatched.length !== 0) {
+    refs.titleLibrary.classList.add('visually-hidden');
+    refs.listLibrary.innerHTML = '';
+    const markupLibrary = createMarkupLibrary(moviesWatched);
+    refs.listLibrary.insertAdjacentHTML('beforeend', markupLibrary);
   }
 }
 
-refs.btnLibraryWatched.addEventListener('click', onClickWatched);
+refs.btnWatched.addEventListener('click', onClickWatched);

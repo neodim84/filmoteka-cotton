@@ -31,7 +31,6 @@ async function onClickCard(e) {
   const idNum = Number(id);
   const trend = load(TREND_KEY);
 
-
   //   const savedWatched = localStorage.getItem(WATCHED_KEY);
   //   const parsedWatched = JSON.parse(savedWatched);
 
