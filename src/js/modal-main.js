@@ -24,10 +24,10 @@ async function onClickCard(e) {
     save(WATCHED_KEY, watched);
   }
 
-  if (e.target.classList.contains('js-film')) {
+  // if (e.target.classList.contains('js-film')) {
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
-  
+
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
@@ -49,7 +49,7 @@ async function onClickCard(e) {
 function onCloseBtn() {
   refs.modal.classList.toggle('is-hidden');
   refs.body.classList.toggle('no-scroll');
-  
+
   refs.modalList.innerHTML = '';
 }
 
