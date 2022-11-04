@@ -1,13 +1,11 @@
 import * as API from './api';
 import { createMarkupModal } from './createMarkup';
 import { refs } from './refs';
-import { save } from '../utils/storage';
+import { save, load } from '../utils/storage';
 
 const WATCHED_KEY = 'watched';
 
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
-const watchLib = document.querySelector('.library__btn');
-console.log('watchLib', watchLib);
 
 let watched = [];
 
@@ -16,22 +14,20 @@ async function onClickCard(e) {
 
   const { id } = e.target.dataset;
 
-  const savedWatched = localStorage.getItem(WATCHED_KEY);
-  const parsedWatched = JSON.parse(savedWatched);
-  console.log('parsedWatched', parsedWatched);
+  //   const savedWatched = localStorage.getItem(WATCHED_KEY);
+  //   const parsedWatched = JSON.parse(savedWatched);
+  if (load(WATCHED_KEY)) {
+    watched = [...load(WATCHED_KEY)];
+  }
 
   function addToWatch() {
-    console.log('id inside onClick', id);
-    if (!parsedWatched) {
-      watched.push(id);
-    }
-
-    //     localStorage.setItem(WATCHED_KEY, JSON.stringify(watched));
+    save(WATCHED_KEY, watched);
   }
-  // if (e.target.classList.contains('js-film')) {
 
+  if (e.target.classList.contains('js-film')) {
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
+  
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;

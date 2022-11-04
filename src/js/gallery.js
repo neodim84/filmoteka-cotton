@@ -26,13 +26,13 @@ export async function getTrending(data) {
   }
 }
 
-async function initPage() {
-  try {
-    remove(GALLERY_KEY);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function initPage() {
+//   try {
+//     remove(GALLERY_KEY);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 getTrending(1);
 
