@@ -98,12 +98,12 @@
 
 .tui-icon-dots,
 .tui-icon-arrow {
-  fill: inherit;
+  fill: #ddd;
   transform: translate(0px, 4px);
   @include mq(mobile-only) {
     transform: translate(0px, 1px);
   }
 }
 .tui-is-disabled .tui-icon-arrow {
-  fill: $bg-body;
+  fill: #ddd;
 }
