@@ -50,7 +50,15 @@ async function onClickCard(e) {
   };
 
   const addToQueue = () => {
-    console.log('addtoqueue button +');
+    // console.log('addtoqueue button +');
+    if (!load(QUEUE_KEY)) {
+      watched.push(trend.find(item => item.id === idNum));
+      return save(QUEUE_KEY, watched);
+    }
+    const some = watched.some(item => item.id === idNum);
+    if (some) {
+      console.log('Этот фильм уже в списке');
+    }
     //       save(WATCHED_KEY, watched);
   };
 
