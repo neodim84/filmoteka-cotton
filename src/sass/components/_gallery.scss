@@ -105,6 +105,10 @@
   }
 }
 
+.darkmode--activated .film__title {
+  color: $text-color-secondary;
+}
+
 .film__wrapper-reset {
   display: inline-block;
   @include font(500, 12px, 1.33, null);
