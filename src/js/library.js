@@ -14,4 +14,4 @@ function onClickWatched() {
   }
 }
 
-refs.btnWatched.addEventListener('click', onClickWatched);
+refs.btnLibraryWatched.addEventListener('click', onClickWatched);

@@ -13,8 +13,8 @@ async function onClickCard(e) {
 
   const { id } = e.target.dataset;
 
-  //   const savedWatched = localStorage.getItem(WATCHED_KEY);
-  //   const parsedWatched = JSON.parse(savedWatched);
+  // const savedWatched = localStorage.getItem(WATCHED_KEY);
+  // const parsedWatched = JSON.parse(savedWatched);
   if (load(WATCHED_KEY)) {
     watched = [...load(WATCHED_KEY)];
   }
@@ -23,7 +23,6 @@ async function onClickCard(e) {
     save(WATCHED_KEY, watched);
   }
 
-  // if (e.target.classList.contains('js-film')) {
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
   if (elt) {
