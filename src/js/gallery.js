@@ -9,7 +9,7 @@ const refs = {
 
 const TREND_KEY = 'trend';
 
-async function getTrending(data) {
+export async function getTrending(data) {
   try {
     const movies = await API.getMovie(data);
     const { results } = movies;
