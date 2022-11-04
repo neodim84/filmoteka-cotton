@@ -216,8 +216,17 @@ h3 {
 }
 
 .modal__btn--watched {
-  color: white;
-  background-color: #ff6b01;
+  border: 1px solid #000000;
+  color: black;
+  background-color: transparent;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    color: white;
+    border: 1px solid #000000;
+    background-color: #ff6b01;
+  }
+  
   @include mq(mobile-only) {
     margin-left: 20px;
   }
@@ -231,6 +240,14 @@ h3 {
 .modal__btn--queue {
   border: 1px solid #000000;
   color: black;
+  background-color: transparent;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus  {
+    color: white;
+    border: 1px solid #000000;
+    background-color: #ff6b01;
+  }
 
   @include mq(mobile-only) {
     margin-right: 20px;
