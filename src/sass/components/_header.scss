@@ -88,7 +88,7 @@ a {
 //     transform: scaleX (0);
 //     animation: lineActive 1000ms cubic-bezier(0.4, 0, 0.2, 1) 0ms 1 normal forwards running;
 //   // @include mq(tablet) {
-    
+
 //   // }
 //   @keyframes lineActive {
 //     0% {
@@ -101,7 +101,7 @@ a {
 //       transform: scaleX(1);
 //     }
 //   }
-// }  
+// }
 
 header {
   width: 100%;
@@ -140,7 +140,7 @@ header {
   display: flex;
   align-items: center;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     transform: scale(1.15);
@@ -151,7 +151,6 @@ header {
 .header__logo__svg {
   animation: animate360 2000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
   stroke: $text-color-lighter;
-  
 }
 
 .header__logo__text {
@@ -167,7 +166,7 @@ header {
   text-align: center;
 
   color: $text-color-lighter;
-  
+
   margin: 0 0 0 10px;
   @include mq(tablet) {
     visibility: visible;
@@ -181,7 +180,6 @@ header {
   gap: 40px;
   margin: 0 0;
 }
-
 
 .header__menu__item a {
   font-family: 'Roboto';
@@ -197,13 +195,13 @@ header {
 
   color: $text-color-lighter;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header__menu__item a:hover,
 .header__menu__item a:focus {
   transform: scale(1.15);
-    text-shadow: 0px 8px 9px $text-color-lighter;
+  text-shadow: 0px 8px 9px $text-color-lighter;
 }
 
 .form-field {
@@ -314,11 +312,12 @@ header {
 }
 
 .library__btn {
-  width: 152px;
+  width: 130px;
   height: 44px;
   background-color: transparent;
   border: 1px solid #ffffff;
   border-radius: 5px;
+  cursor: pointer;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -333,6 +332,9 @@ header {
   text-transform: uppercase;
 
   color: $text-color-lighter;
+  @include mq(tablet) {
+    width: 152px;
+  }
 }
 
 .library__btn--active {
@@ -341,7 +343,10 @@ header {
 }
 
 .library__btns__item + .library__btns__item {
-  margin-left: 32px;
+  margin-left: 20px;
+  @include mq(tablet) {
+    margin-left: 32px;
+  }
 }
 // .header__form__input::placeholder {
 //   padding-left: 0;
