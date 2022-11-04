@@ -13,8 +13,6 @@ async function onClickCard(e) {
 
   const { id } = e.target.dataset;
 
-  // const savedWatched = localStorage.getItem(WATCHED_KEY);
-  // const parsedWatched = JSON.parse(savedWatched);
   if (load(WATCHED_KEY)) {
     watched = [...load(WATCHED_KEY)];
   }
