@@ -1,1 +1,11 @@
+.library__title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.library__list {
+  @include mq(desktop) {
+    flex-wrap: nowrap;
+  }
+}

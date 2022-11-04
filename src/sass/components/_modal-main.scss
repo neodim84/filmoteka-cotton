@@ -72,7 +72,6 @@
   }
 }
 
-
 .modal__btn-close {
   width: 30px;
   height: 30px;
@@ -89,7 +88,6 @@
     color: $bg-button;
   }
 }
-
 
 .modal__poster {
   border-radius: 5px;
@@ -206,6 +204,7 @@ h3 {
   border-radius: 5px;
   font-size: 12px;
   line-height: 1, 33;
+  cursor: pointer;
 
   @include mq(tablet-only) {
     width: 125px;

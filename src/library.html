@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-    <script src="./index.js" type="module"></script>
+    <script src="./library-index.js" type="module"></script>
     <title>library</title>
 </head>
 
@@ -19,9 +19,46 @@
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/library-header.html"></include>
     <!-- <include src="./partials/gallery.html"></include> -->
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal-footer.html"></include>
-    <include src="./partials/spinner.html"></include>
+    <section class="library-gallery">
+        <h2 class="library__title">Your library is empty yet...</h2>
+        <div class="film-gallery__container">
+            <ul class="library__list list">
+                <li class="film-gallery__item card">
+                    <a class="link">
+                        <img class="film-gallery__img"
+                            src="http://image.tmdb.org/t/p/w780/438QXt1E3WJWb3PqNniK0tAE5c1.jpg" loading='lazy'
+                            alt="фото фільма" />
+                        <div class="film" data-id=>
+                            <h2 class="film__title"></h2>
+                        </div>
+                    </a>
+                </li>
+                <li class="film-gallery__item card">
+                    <a class="link">
+                        <img class="film-gallery__img"
+                            src="http://image.tmdb.org/t/p/w780/62HCnUTziyWcpDaBO2i1DX17ljH.jpg" loading='lazy'
+                            alt="фото фільма" />
+                        <div class="film" data-id=>
+                            <h2 class="film__title"></h2>
+                        </div>
+                    </a>
+                </li>
+                <li class="film-gallery__item card">
+                    <a class="link">
+                        <img class="film-gallery__img"
+                            src="http://image.tmdb.org/t/p/w780/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" loading='lazy'
+                            alt="фото фільма" />
+                        <div class="film" data-id=>
+                            <h2 class="film__title"></h2>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <include src="./partials/footer.html"></include>
+        <include src="./partials/modal-footer.html"></include>
+        <include src="./partials/spinner.html"></include>
+    </section>
 </body>
 
 </html>

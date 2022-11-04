@@ -2,32 +2,64 @@ import * as API from './api';
 import { createMarkupModal } from './createMarkup';
 import { refs } from './refs';
 import { save, load } from '../utils/storage';
+// import AddToDataBtn from './addToDataBtn';
 
-const WATCHED_KEY = 'watched';
+// const addToWatchedBtn = new AddToDataBtn({
+//   selector: '[data-action="add_to_watched"]',
+//   hidden: false,
+// });
+// const addToQueuedBtn = new AddToDataBtn({
+//   selector: '[data-action="add_to_queue"]',
+//   hidden: false,
+// });
 
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
 
-let watched = [];
+const addToQueuedBtn = document.querySelector('.modal__btn--queue');
 
+console.log(addToWatchedBtn);
+
+const TREND_KEY = 'trend';
+const WATCHED_KEY = 'watched';
+const QUEUE_KEY = 'queue';
+
+let watched = [];
 async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 
   const { id } = e.target.dataset;
+  const idNum = Number(id);
+  const trend = load(TREND_KEY);
 
   //   const savedWatched = localStorage.getItem(WATCHED_KEY);
   //   const parsedWatched = JSON.parse(savedWatched);
+
   if (load(WATCHED_KEY)) {
     watched = [...load(WATCHED_KEY)];
   }
 
-  function addToWatch() {
-    save(WATCHED_KEY, watched);
-  }
+  const addToWatched = () => {
+    if (!load(WATCHED_KEY)) {
+      watched.push(trend.find(item => item.id === idNum));
+      return save(WATCHED_KEY, watched);
+    }
+    watched = load(WATCHED_KEY);
+    //    prevState.todos.filter(todo => todo.id !== todoId),
+    const some = watched.some(item => item.id !== idNum);
+    //     watched.forEach(element => {
+    //       if (element.id !== idNum) {
+    //         watched.push(trend.find(item => item.id === idNum));
+    //       }
+    //     });
+  };
 
-  // if (e.target.classList.contains('js-film')) {
+  const addToQueue = () => {
+    console.log('addtoqueue button +');
+    //       save(WATCHED_KEY, watched);
+  };
+
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
-
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
@@ -39,7 +71,8 @@ async function onClickCard(e) {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
-      addToWatchedBtn.addEventListener('click', addToWatch);
+      addToWatchedBtn.addEventListener('click', addToWatched);
+      addToQueuedBtn.addEventListener('click', addToQueue);
     } catch (error) {
       console.log(error.message);
     }
