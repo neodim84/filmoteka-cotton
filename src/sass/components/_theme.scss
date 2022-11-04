@@ -1,0 +1,29 @@
+.body-theme {
+    color: $text-color-primary;
+    background-color: $bg-body;
+  }
+
+// .theme {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100px;
+//     height: 30px;
+//     border-radius: 25px;
+//     background-color: transparent;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     margin-right: 32px;
+//     margin-top: 80px;
+//     z-index: 1;
+  
+//     @media screen and (max-width: 768px) {
+//       margin-right: 32px;
+//     }
+  
+//     @media screen and (max-width: 320px) {
+//       margin-right: 20px;
+//       margin-top: 80px;
+//     }
+//   }
