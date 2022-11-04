@@ -17,8 +17,6 @@ const addToWatchedBtn = document.querySelector('.modal__btn--watched');
 
 const addToQueuedBtn = document.querySelector('.modal__btn--queue');
 
-console.log(addToWatchedBtn);
-
 const TREND_KEY = 'trend';
 const WATCHED_KEY = 'watched';
 const QUEUE_KEY = 'queue';
@@ -30,25 +28,24 @@ async function onClickCard(e) {
   const idNum = Number(id);
   const trend = load(TREND_KEY);
 
-  //   const savedWatched = localStorage.getItem(WATCHED_KEY);
-  //   const parsedWatched = JSON.parse(savedWatched);
-  //   if (load(WATCHED_KEY)) {
-  //     watched = [...load(WATCHED_KEY)];
-  //   }
-
   const addToWatched = () => {
     if (!load(WATCHED_KEY)) {
       watched.push(trend.find(item => item.id === idNum));
       return save(WATCHED_KEY, watched);
     }
-    watched = load(WATCHED_KEY);
-    //    prevState.todos.filter(todo => todo.id !== todoId),
-    const some = watched.some(item => item.id !== idNum);
-    //     watched.forEach(element => {
-    //       if (element.id !== idNum) {
-    //         watched.push(trend.find(item => item.id === idNum));
-    //       }
-    //     });
+    const some = watched.some(item => item.id === idNum);
+    if (some) {
+      console.log('Этот фильм уже в списке');
+    }
+
+    //     if (!load(WATCHED_KEY)) {
+    // //       watched.push(trend.find(item => item.id === idNum));
+    //       console.log(watched);
+    // //       return;
+    //       //       return save(WATCHED_KEY, watched);
+    //     }
+    //     console.log(watched);
+    //     save(WATCHED_KEY, watched);
   };
 
   const addToQueue = () => {
