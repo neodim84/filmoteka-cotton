@@ -2,7 +2,7 @@ export const refs = {
   body: document.querySelector('body'),
   cardMovie: document.querySelector('.film-gallery__list'),
   modalList: document.querySelector('.modal__desc'),
-  modal: document.querySelector('[data-modal]'),
+  modal: document.querySelector('[data-modal-main]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   btnAddWatched: document.querySelector('.modal__btn--watched'),
   btnAddQueue: document.querySelector('.modal__btn--queue'),

@@ -15,6 +15,7 @@ function onClickWatched() {
     refs.titleLibrary.classList.add('visually-hidden');
     refs.listLibrary.innerHTML = '';
     const markupLibrary = createMarkupLibrary(moviesWatched);
+    console.log(markupLibrary);
     refs.listLibrary.insertAdjacentHTML('beforeend', markupLibrary);
   }
 }
