@@ -2,19 +2,8 @@ import * as API from './api';
 import { createMarkupModal } from './createMarkup';
 import { refs } from './refs';
 import { save, load } from '../utils/storage';
-// import AddToDataBtn from './addToDataBtn';
-
-// const addToWatchedBtn = new AddToDataBtn({
-//   selector: '[data-action="add_to_watched"]',
-//   hidden: false,
-// });
-// const addToQueuedBtn = new AddToDataBtn({
-//   selector: '[data-action="add_to_queue"]',
-//   hidden: false,
-// });
 
 const addToWatchedBtn = document.querySelector('.modal__btn--watched');
-
 const addToQueuedBtn = document.querySelector('.modal__btn--queue');
 
 const TREND_KEY = 'trend';
@@ -24,48 +13,9 @@ const QUEUE_KEY = 'queue';
 async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 
-  const { id } = e.target.dataset;
-  const idNum = Number(id);
-  const trend = load(TREND_KEY);
-
-  function addToWatched() {
-    let watched = [];
-    const savedWatched = load(WATCHED_KEY);
-    if (savedWatched) {
-      console.log(savedWatched);
-    }
-    watched = [...trend];
-    console.log('watched', watched);
-    //     if (!load(WATCHED_KEY)) {
-    //       watched.push(trend.find(item => item.id === idNum));
-    //       return save(WATCHED_KEY, watched);
-    //     }
-
-    //     if (!load(WATCHED_KEY)) {
-    // //       watched.push(trend.find(item => item.id === idNum));
-    //       console.log(watched);
-    // //       return;
-    //       //       return save(WATCHED_KEY, watched);
-    //     }
-    //     console.log(watched);
-    //     save(WATCHED_KEY, watched);
-    addToWatchedBtn.removeEventListener('click', addToWatched);
-  }
-
-  const addToQueue = () => {
-    // console.log('addtoqueue button +');
-    if (!load(QUEUE_KEY)) {
-      watched.push(trend.find(item => item.id === idNum));
-      return save(QUEUE_KEY, watched);
-    }
-    const some = watched.some(item => item.id === idNum);
-    if (some) {
-      console.log('Этот фильм уже в списке');
-    }
-    //       save(WATCHED_KEY, watched);
-  };
   e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
+
   if (elt) {
     const currentEl = e.target;
     const movieId = currentEl.dataset.id;
@@ -73,17 +23,51 @@ async function onClickCard(e) {
     refs.body.classList.toggle('no-scroll');
     refs.btnAddWatched.setAttribute('data-id', movieId);
     refs.btnAddQueue.setAttribute('data-id', movieId);
+
     try {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
-      addToWatchedBtn.addEventListener('click', addToWatched);
-      addToQueuedBtn.addEventListener('click', addToQueue);
     } catch (error) {
       console.log(error.message);
     }
   }
 }
+
+async function addToWatched(e) {
+  const moviesDataTrend = load(TREND_KEY);
+
+  if (!load(WATCHED_KEY)) {
+    save(WATCHED_KEY, []);
+  }
+
+  const moviesDataLibrary = load(WATCHED_KEY);
+  save(WATCHED_KEY, [...moviesDataLibrary]);
+
+  const { id } = e.target.dataset;
+  const idNum = Number(id);
+  const movieDataById = moviesDataTrend.find(item => item.id === idNum);
+  const moviesData = [];
+  moviesData.push(movieDataById);
+
+  if (moviesDataLibrary.every(item => item.id !== idNum)) {
+    save(WATCHED_KEY, [...moviesDataLibrary, ...moviesData]);
+  }
+}
+
+async function addToQueue(e) {
+  if (!load(QUEUE_KEY)) {
+    watched.push(trend.find(item => item.id === idNum));
+    return save(QUEUE_KEY, watched);
+  }
+  const some = watched.some(item => item.id === idNum);
+  if (some) {
+    console.log('Этот фильм уже в списке');
+  }
+}
+
+addToWatchedBtn.addEventListener('click', addToWatched);
+addToQueuedBtn.addEventListener('click', addToQueue);
 
 function onCloseBtn() {
   refs.modal.classList.toggle('is-hidden');
