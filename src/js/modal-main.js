@@ -21,7 +21,6 @@ const TREND_KEY = 'trend';
 const WATCHED_KEY = 'watched';
 const QUEUE_KEY = 'queue';
 
-let watched = [];
 async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 
@@ -29,15 +28,18 @@ async function onClickCard(e) {
   const idNum = Number(id);
   const trend = load(TREND_KEY);
 
-  const addToWatched = () => {
-    if (!load(WATCHED_KEY)) {
-      watched.push(trend.find(item => item.id === idNum));
-      return save(WATCHED_KEY, watched);
+  function addToWatched() {
+    let watched = [];
+    const savedWatched = load(WATCHED_KEY);
+    if (savedWatched) {
+      console.log(savedWatched);
     }
-    const some = watched.some(item => item.id === idNum);
-    if (some) {
-      console.log('Этот фильм уже в списке');
-    }
+    watched = [...trend];
+    console.log('watched', watched);
+    //     if (!load(WATCHED_KEY)) {
+    //       watched.push(trend.find(item => item.id === idNum));
+    //       return save(WATCHED_KEY, watched);
+    //     }
 
     //     if (!load(WATCHED_KEY)) {
     // //       watched.push(trend.find(item => item.id === idNum));
@@ -47,14 +49,14 @@ async function onClickCard(e) {
     //     }
     //     console.log(watched);
     //     save(WATCHED_KEY, watched);
-  };
+    addToWatchedBtn.removeEventListener('click', addToWatched);
+  }
 
   const addToQueue = () => {
     console.log('addtoqueue button +');
     //       save(WATCHED_KEY, watched);
   };
 
-  e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
   if (elt) {
     const currentEl = e.target;
