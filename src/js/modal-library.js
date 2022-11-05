@@ -7,7 +7,7 @@ async function onCardLibrary(e) {
   e.preventDefault();
   window.addEventListener('keydown', onEscKey);
   const elt = e.target.closest('.library__list');
-  if (elt) {
+  if (elt && !e.target.classList.contains('library__link')) {
     refs.btnAddWatched.textContent = 'Remove from watched';
 
     const currentEl = e.target;
