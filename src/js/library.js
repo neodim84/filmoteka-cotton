@@ -1,7 +1,6 @@
 import { load } from '../utils/storage';
 import { refs } from './refs';
 import { createMarkupLibrary } from './createMarkup';
-import { watched } from './modal-main';
 
 console.log('in onClickWatched');
 function onClickWatched() {
