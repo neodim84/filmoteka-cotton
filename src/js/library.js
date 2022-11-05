@@ -2,12 +2,8 @@ import { load } from '../utils/storage';
 import { refs } from './refs';
 import { createMarkupLibrary } from './createMarkup';
 
-console.log('in onClickWatched');
-
 function onClickWatched() {
-  console.log('in onClickWatched');
-
-  const moviesWatched = load('trend');
+  const moviesWatched = load('watched');
 
   if (moviesWatched.length !== 0) {
     refs.titleLibrary.classList.add('visually-hidden');
