@@ -7,7 +7,7 @@ async function onCardLibrary(e) {
   e.preventDefault();
   window.addEventListener('keydown', onEscKey);
   const elt = e.target.closest('.library__list');
-  if (elt) {
+  if (elt && !e.target.classList.contains('library__link')) {
     refs.btnAddWatched.textContent = 'Remove from watched';
 
     const currentEl = e.target;
@@ -21,8 +21,9 @@ async function onCardLibrary(e) {
       const movieInfo = await API.getMovieById(movieId);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
-      addToWatchedBtn.addEventListener('click', addToWatched);
-      addToQueuedBtn.addEventListener('click', addToQueue);
+      // здесь кнопки становяться с действием REMOVE поэтому вожможно нужен класс modal__btn--remove (или дата атрибут)
+      //   addToWatchedBtn.addEventListener('click', addToWatched);
+      //   addToQueuedBtn.addEventListener('click', addToQueue);
     } catch (error) {
       console.log(error.message);
     }
