@@ -64,7 +64,7 @@ async function onClickCard(e) {
     }
     //       save(WATCHED_KEY, watched);
   };
-
+  e.preventDefault();
   const elt = e.target.closest('.film-gallery__list');
   if (elt) {
     const currentEl = e.target;
