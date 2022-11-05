@@ -42,16 +42,12 @@ async function addToWatched(e) {
   }
 
   const moviesDataLibrary = load(WATCHED_KEY);
-  save(WATCHED_KEY, [...moviesDataLibrary]);
 
-  const { id } = e.target.dataset;
-  const idNum = Number(id);
-  const movieDataById = moviesDataTrend.find(item => item.id === idNum);
-  const moviesData = [];
-  moviesData.push(movieDataById);
+  const id = Number(e.target.dataset.id);
+  const movieData = moviesDataTrend.find(item => item.id === id);
 
-  if (moviesDataLibrary.every(item => item.id !== idNum)) {
-    save(WATCHED_KEY, [...moviesDataLibrary, ...moviesData]);
+  if (moviesDataLibrary.every(item => item.id !== id)) {
+    save(WATCHED_KEY, [...moviesDataLibrary, ...[movieData]]);
   }
 }
 
