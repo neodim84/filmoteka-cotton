@@ -63,7 +63,7 @@ async function onClickCard(e) {
   }
 }
 
-async function addToWatched(e) {
+function addToWatched(e) {
   const moviesDataTrend = load(TREND_KEY);
   const moviesDataLibrary = load(WATCHED_KEY);
 
@@ -85,7 +85,7 @@ async function addToWatched(e) {
   }
 }
 
-async function addToQueue(e) {
+function addToQueue(e) {
   const moviesDataTrend = load(TREND_KEY);
   const moviesDataQueue = load(QUEUE_KEY);
 
