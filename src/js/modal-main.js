@@ -36,10 +36,14 @@ async function onClickCard(e) {
   const moviesDataLibrary = load(WATCHED_KEY);
 
   if (moviesDataLibrary.some(item => item.id === Number(e.target.dataset.id))) {
-    e.target.setAttribute('data-action', 'remove');
+    refs.btnAddWatched.setAttribute('data-action', 'remove');
     refs.btnAddWatched.textContent = 'Remove from watched';
-  } else {
-    e.target.setAttribute('data-action', 'add');
+  }
+
+  if (
+    moviesDataLibrary.every(item => item.id !== Number(e.target.dataset.id))
+  ) {
+    refs.btnAddWatched.setAttribute('data-action', 'add');
     refs.btnAddWatched.textContent = 'Add to watched';
   }
 }
@@ -53,8 +57,16 @@ async function addToWatched(e) {
 
   if (moviesDataLibrary.every(item => item.id !== id)) {
     save(WATCHED_KEY, [...moviesDataLibrary, ...[movieData]]);
-    e.target.setAttribute('data-action', 'remove');
+    refs.btnAddWatched.setAttribute('data-action', 'remove');
     refs.btnAddWatched.textContent = 'Remove from watched';
+  }
+
+  if (moviesDataLibrary.some(item => item.id === id)) {
+    const index = moviesDataLibrary.findIndex(item => item.id === id);
+    moviesDataLibrary.splice(index, 1);
+    save(WATCHED_KEY, moviesDataLibrary);
+    refs.btnAddWatched.setAttribute('data-action', 'add');
+    refs.btnAddWatched.textContent = 'Add to watched';
   }
 }
 
