@@ -17,8 +17,8 @@ async function onClickCard(e) {
     const id = e.target.dataset.id;
     refs.modal.classList.toggle('is-hidden');
     refs.body.classList.toggle('no-scroll');
-    refs.btnAddWatched.setAttribute('data-id', id);
-    refs.btnAddQueue.setAttribute('data-id', id);
+    refs.btnAddToWatched.setAttribute('data-id', id);
+    refs.btnAddToQueue.setAttribute('data-id', id);
 
     try {
       const movieInfo = await API.getMovieById(id);
@@ -33,18 +33,33 @@ async function onClickCard(e) {
     save(WATCHED_KEY, []);
   }
 
+  if (!load(QUEUE_KEY)) {
+    save(QUEUE_KEY, []);
+  }
+
   const moviesDataLibrary = load(WATCHED_KEY);
+  const moviesDataQueue = load(QUEUE_KEY);
 
   if (moviesDataLibrary.some(item => item.id === Number(e.target.dataset.id))) {
-    refs.btnAddWatched.setAttribute('data-action', 'remove');
-    refs.btnAddWatched.textContent = 'Remove from watched';
+    refs.btnAddToWatched.setAttribute('data-action', 'remove');
+    refs.btnAddToWatched.textContent = 'Remove from watched';
   }
 
   if (
     moviesDataLibrary.every(item => item.id !== Number(e.target.dataset.id))
   ) {
-    refs.btnAddWatched.setAttribute('data-action', 'add');
-    refs.btnAddWatched.textContent = 'Add to watched';
+    refs.btnAddToWatched.setAttribute('data-action', 'add');
+    refs.btnAddToWatched.textContent = 'Add to watched';
+  }
+
+  if (moviesDataQueue.some(item => item.id === Number(e.target.dataset.id))) {
+    refs.btnAddToQueue.setAttribute('data-action', 'remove');
+    refs.btnAddToQueue.textContent = 'Remove from queue';
+  }
+
+  if (moviesDataQueue.every(item => item.id !== Number(e.target.dataset.id))) {
+    refs.btnAddToQueue.setAttribute('data-action', 'add');
+    refs.btnAddToQueue.textContent = 'Add to queue';
   }
 }
 
@@ -56,33 +71,44 @@ async function addToWatched(e) {
   const movieData = moviesDataTrend.find(item => item.id === id);
 
   if (moviesDataLibrary.every(item => item.id !== id)) {
-    save(WATCHED_KEY, [...moviesDataLibrary, ...[movieData]]);
-    refs.btnAddWatched.setAttribute('data-action', 'remove');
-    refs.btnAddWatched.textContent = 'Remove from watched';
+    save(WATCHED_KEY, [...moviesDataLibrary, movieData]);
+    refs.btnAddToWatched.setAttribute('data-action', 'remove');
+    refs.btnAddToWatched.textContent = 'Remove from watched';
   }
 
   if (moviesDataLibrary.some(item => item.id === id)) {
     const index = moviesDataLibrary.findIndex(item => item.id === id);
     moviesDataLibrary.splice(index, 1);
     save(WATCHED_KEY, moviesDataLibrary);
-    refs.btnAddWatched.setAttribute('data-action', 'add');
-    refs.btnAddWatched.textContent = 'Add to watched';
+    refs.btnAddToWatched.setAttribute('data-action', 'add');
+    refs.btnAddToWatched.textContent = 'Add to watched';
   }
 }
 
 async function addToQueue(e) {
-  if (!load(QUEUE_KEY)) {
-    watched.push(trend.find(item => item.id === idNum));
-    return save(QUEUE_KEY, watched);
+  const moviesDataTrend = load(TREND_KEY);
+  const moviesDataQueue = load(QUEUE_KEY);
+
+  const id = Number(e.target.dataset.id);
+  const movieData = moviesDataTrend.find(item => item.id === id);
+
+  if (moviesDataQueue.every(item => item.id !== id)) {
+    save(QUEUE_KEY, [...moviesDataQueue, movieData]);
+    refs.btnAddToQueue.setAttribute('data-action', 'remove');
+    refs.btnAddToQueue.textContent = 'Remove from queue';
   }
-  const some = watched.some(item => item.id === idNum);
-  if (some) {
-    console.log('Этот фильм уже в списке');
+
+  if (moviesDataQueue.some(item => item.id === id)) {
+    const index = moviesDataQueue.findIndex(item => item.id === id);
+    moviesDataQueue.splice(index, 1);
+    save(QUEUE_KEY, moviesDataQueue);
+    refs.btnAddToQueue.setAttribute('data-action', 'add');
+    refs.btnAddToQueue.textContent = 'Add to queue';
   }
 }
 
-refs.addToWatchedBtn.addEventListener('click', addToWatched);
-refs.addToQueuedBtn.addEventListener('click', addToQueue);
+refs.btnAddToWatched.addEventListener('click', addToWatched);
+refs.btnAddToQueue.addEventListener('click', addToQueue);
 
 function onCloseBtn() {
   refs.modal.classList.toggle('is-hidden');
