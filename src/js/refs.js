@@ -14,6 +14,8 @@ export const refs = {
   modalClose: document.querySelector('.team-modal__close-btn'),
   teamList: document.querySelector('.team__list'),
   titleLibrary: document.querySelector('.library__title'),
+  addToWatchedBtn: document.querySelector('.modal__btn--watched'),
+  addToQueuedBtn: document.querySelector('.modal__btn--queue'),
 };
 
 // const refs = {

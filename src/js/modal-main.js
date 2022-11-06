@@ -3,9 +3,6 @@ import { createMarkupModal } from './createMarkup';
 import { refs } from './refs';
 import { save, load } from '../utils/storage';
 
-const addToWatchedBtn = document.querySelector('.modal__btn--watched');
-const addToQueuedBtn = document.querySelector('.modal__btn--queue');
-
 const TREND_KEY = 'trend';
 const WATCHED_KEY = 'watched';
 const QUEUE_KEY = 'queue';
@@ -14,28 +11,23 @@ async function onClickCard(e) {
   window.addEventListener('keydown', onEscKey);
 
   e.preventDefault();
-  const elt = e.target.closest('.film-gallery__list');
+  const element = e.target.closest('.film-gallery__list');
 
-  if (elt) {
-    const currentEl = e.target;
-    const movieId = currentEl.dataset.id;
+  if (element) {
+    const id = e.target.dataset.id;
     refs.modal.classList.toggle('is-hidden');
     refs.body.classList.toggle('no-scroll');
-    refs.btnAddWatched.setAttribute('data-id', movieId);
-    refs.btnAddQueue.setAttribute('data-id', movieId);
+    refs.btnAddWatched.setAttribute('data-id', id);
+    refs.btnAddQueue.setAttribute('data-id', id);
 
     try {
-      const movieInfo = await API.getMovieById(movieId);
+      const movieInfo = await API.getMovieById(id);
       const markupModal = createMarkupModal(movieInfo);
       refs.modalList.insertAdjacentHTML('beforeend', markupModal);
     } catch (error) {
       console.log(error.message);
     }
   }
-}
-
-async function addToWatched(e) {
-  const moviesDataTrend = load(TREND_KEY);
 
   if (!load(WATCHED_KEY)) {
     save(WATCHED_KEY, []);
@@ -43,11 +35,26 @@ async function addToWatched(e) {
 
   const moviesDataLibrary = load(WATCHED_KEY);
 
+  if (moviesDataLibrary.some(item => item.id === Number(e.target.dataset.id))) {
+    e.target.setAttribute('data-action', 'remove');
+    refs.btnAddWatched.textContent = 'Remove from watched';
+  } else {
+    e.target.setAttribute('data-action', 'add');
+    refs.btnAddWatched.textContent = 'Add to watched';
+  }
+}
+
+async function addToWatched(e) {
+  const moviesDataTrend = load(TREND_KEY);
+  const moviesDataLibrary = load(WATCHED_KEY);
+
   const id = Number(e.target.dataset.id);
   const movieData = moviesDataTrend.find(item => item.id === id);
 
   if (moviesDataLibrary.every(item => item.id !== id)) {
     save(WATCHED_KEY, [...moviesDataLibrary, ...[movieData]]);
+    e.target.setAttribute('data-action', 'remove');
+    refs.btnAddWatched.textContent = 'Remove from watched';
   }
 }
 
@@ -62,8 +69,8 @@ async function addToQueue(e) {
   }
 }
 
-addToWatchedBtn.addEventListener('click', addToWatched);
-addToQueuedBtn.addEventListener('click', addToQueue);
+refs.addToWatchedBtn.addEventListener('click', addToWatched);
+refs.addToQueuedBtn.addEventListener('click', addToQueue);
 
 function onCloseBtn() {
   refs.modal.classList.toggle('is-hidden');
